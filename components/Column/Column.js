@@ -10,7 +10,8 @@ export const Column = React.memo(({
   backgroundColor,
   customClasses = "",
   index = 0,
-  verticalAlignment = "" // Nouvel attribut pour l'alignement vertical
+  verticalAlignment = "",
+  id = "" // Nouvel attribut pour l'ID d'ancre
 }) => {
   const { ref, inView } = useInView({
     threshold: 0.2,
@@ -50,6 +51,7 @@ export const Column = React.memo(({
       ref={ref}
       style={styles}
       className={`px-2 py-5 ${customClasses} ${alignmentClass}`}
+      id={id} // Appliquer l'ID d'ancre
     >
       {children}
     </div>

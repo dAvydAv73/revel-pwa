@@ -271,7 +271,7 @@ export const BlockRenderer = ({ blocks }) => {
           );
         }
         case "acf/contact-div": {
-          const blockId = block.attributes?.data?.id || "";
+          const blockId = block.attributes?.data?.blockcustomid || "";
         
           return (
             <div
