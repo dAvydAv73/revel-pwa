@@ -60,7 +60,20 @@ NextJs/styles/globals.css
     opacity: 0;
   }
 }
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.animate-slideDown {
+  animation: slideDown 0.4s ease-out forwards;
+}
 
 @layer components {
   .btn {
@@ -301,10 +314,10 @@ strong{
 /* Dans global.css */
 @media (max-width: 480px) {
   .mobile-text-xs {
-    font-size: 8px !important;
+    font-size: 10px !important;
   }
   .logo-nav-link img{
-    width: 130px;
+    width: 180px;
   }
   .logo-nav-link p{
     font-size: 9px;
