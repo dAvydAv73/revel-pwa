@@ -27,19 +27,23 @@ export const MainMenu = ({
 
   useEffect(() => {
     const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
       if (window.innerWidth >= 640) {
-        const currentScrollY = window.scrollY;
+        // Comportement sur desktop
         setIsScrolled(currentScrollY > 50);
       } else {
-        setIsScrolled(true);
+        // Comportement sur mobile - tenir compte du défilement également
+        setIsScrolled(currentScrollY > 10); // Seuil plus bas pour mobile
       }
     };
-
+  
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
-
+  
+    // Appliquer immédiatement pour définir l'état initial
     handleScroll();
-
+  
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
@@ -58,7 +62,7 @@ export const MainMenu = ({
           ? 'bg-[#FFF7F7] border-t sm:border-b border-gray-300 shadow-md scrolled' 
           : 'bg-transparent border-t sm:border-b border-transparent'
         }
-        h-[110px] sm:h-[140px]`}
+        h-[110px] sm:h-[110px]`}
       >
         <div className="container mx-auto px-5 flex items-center justify-between h-[110px] ">
          

@@ -7,7 +7,8 @@ export const Cover = ({ children, background }) => {
   return (
   
       <div 
-          className="h-screen  flex items-left  flex-col	homeCover cover-container min-h-[400px] max-h-[900px] pb-20" // Conservez votre classe container existante
+          className="flex items-left flex-col h-[70vh] md:h-[90vh] lg:h-screen homeCover cover-container min-h-[400px] max-h-[900px] pb-20"
+          // Conservez votre classe container existante
           style={{
             position: 'relative',
             backgroundImage: `url('${background}')`,
