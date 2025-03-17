@@ -326,7 +326,8 @@ strong{
     font-size: 11px;
   }
   .child-container {
-    margin-top: 18vh;
+    margin-top: 25vh;
+    padding-left: 0.5em;
   }
   .homeCover .child-container  h2{
     font-size: 1.4em!important;
