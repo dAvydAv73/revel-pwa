@@ -100,7 +100,7 @@ export const MainMenu = ({
                 }}
               >
                 <a
-                  href={item.destination}
+                  href={item.destination?.url || '#'}
                   className={`p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 text-[#091369] drop-shadow-md ${
                     isScrolled ? "" : ""
                   }`}
@@ -126,7 +126,7 @@ export const MainMenu = ({
               href="https://www.linkedin.com/in/elsa-rousson/"
               target="_blank"
               rel="noopener noreferrer"
-              className="md:inline-block sr-only md:not-sr-only text-[#091369]" 
+              className="md:inline-block sr-only md:not-sr-only text-[#091369]"
             >
               <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 text-[#091369]" />
             </a>
