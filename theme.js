@@ -18,4 +18,9 @@ export const theme = {
   cacao: "#4C4442",
   brume: "#7E6E64",
   brumelight: "#efeded",
+  coralred: "#EF6363",
+  dustyrose: "#E89B9B",
+  navyblue: "#091369",
+  softpearl: "#FFF7F7",
+  whispergrey: "#F3F3F8"
 };

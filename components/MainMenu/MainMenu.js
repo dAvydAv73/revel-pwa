@@ -60,14 +60,14 @@ export const MainMenu = ({
         }
         h-[110px] sm:h-[140px]`}
       >
-        <div className="container mx-auto px-5 flex items-center justify-between h-[110px] sm:h-[140px]">
+        <div className="container mx-auto px-5 flex items-center justify-between h-[110px] ">
          
           <div
             className={`logoLink flex-3 transition-opacity duration-300 ${
               isScrolled ? "opacity-100" : "opacity-100"
             }`}
           >
-            <a href="/" title="Philippe Chevrier - Home">
+            <a href="/" title="Révèl - Accueil" className="logo-nav-link">
             {/* ratio de 200 par 90 */}
               <Image
                 priority
@@ -77,10 +77,10 @@ export const MainMenu = ({
                 className="h-auto"
                 alt="Révèl | Coaching professionnelle & Bilan de compétences"
               />
-              <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2">Coaching professionnelle &<br /> Bilan de compétences</p>
+              <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs">Coaching professionnelle &<br /> Bilan de compétences</p>
             </a>
           </div>
-          <div className="flex-1 flex justify-center items-center main-menu hidden sm:flex">
+          <div className="flex-1 flex justify-center items-center main-menu hidden xl:flex">
             {(items || []).map((item) => (
               <div key={item.id} className="relative group animate-slideLeft">
                 <a
@@ -98,6 +98,8 @@ export const MainMenu = ({
                         key={subMenuItem.id}
                         href={subMenuItem.destination}
                         className="block whitespace-nowrap p-5 hover:bg-slate-700 text-white"
+                        title="Suivez-moi sur LinkedIn"
+
                       >
                         {subMenuItem.label}
                       </a>
@@ -106,62 +108,66 @@ export const MainMenu = ({
                 )}
               </div>
             ))}
-            {/* Nouveaux liens ajoutés */}
-            <div className="flex items-center space-x-4 ml-4">
-              <a 
-                href="https://www.linkedin.com/in/elsa-rousson/" 
-                target="_blank" 
+            </div>
+            <div className="flex items-center ml-4 justify-end max-[1280px]:absolute max-[1280px]:right-5">
+              {/* lien non affiché sur mobile*/}
+              <a
+                href="https://www.linkedin.com/in/elsa-rousson/"
+                target="_blank"
                 rel="noopener noreferrer"
-                className=""
+                className="md:inline-block sr-only md:not-sr-only"
               >
-                <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4 txt-[#D88A8A]" />
+                <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 txt-[#D88A8A]" />
+              </a>
+               {/* Bouton rendez-vous */}
+               <a
+                href="#"
+                className="cta-nav text-[#091369] bg-[#E89B9B] hover:text-[#FFF7F7] px-3 py-3 flex items-center space-x-2 hover:bg-[#EF6363] transition-colors font-lemonmilk text-xs sm:ml-4 min-w-[160px]"
+               >
+                Rendez-vous
+                <FontAwesomeIcon icon={faCalendarDay} className="ml-2" />
               </a>
               
-              <a 
-                href="#" 
-                className="text-[#FFF7F7] bg-[#D88A8A] px-3 py-2 rounded flex items-center space-x-2 hover:bg-[#091369] transition-colors font-lemonmilk text-xs"
+              {/* Menu hamburger */}
+              <button
+                onClick={toggleMenu}
+                className=" xl:hidden text-xl ml-4"
               >
-                <span>Demande de rendez-vous</span>
-
-                <FontAwesomeIcon icon={faCalendarDay} />
-              </a>
+                <FontAwesomeIcon icon={faBars} className="w-5 h-5  text-[#091369]"/>
+              </button>
+              
+             
+              
             </div>
-            <button
-              onClick={toggleMenu}
-              className={`ml-4 text-2xl lg:hidden ${
-                isScrolled ? "text-[#4C4442]" : "text-white"
-              }`}
-            >
-           
-              <FontAwesomeIcon icon={faBars} className="bg-[#091369]"/>
-            </button>
           </div>
-        </div>
       </div>
 
       {/* Full-screen menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-[#091369] bg-opacity-95 z-40 flex flex-col items-center justify-center text-white">
+        <div className="fixed inset-0 bg-[#FFF7F7] backdrop-blur bg-opacity-80   z-40 flex flex-col items-center justify-center text-white">
           <button
             onClick={toggleMenu}
-            className="absolute top-5 right-5 text-3xl text-white"
+            className="absolute top-5 right-5 text-3xl text-[#091369]"
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
-          <Image
-            src={LogoIconBlue}
-            height={135}
-            width={390}
-            className="mb-16"
-            alt="Philippe Chevrier"
-          />
+          <a href="/" title="Révèl - Accueil" className="mb-16 ">
+            <Image
+              src={LogoIconBlue}
+              height={135}
+              width={300}
+              className=""
+              alt="Révèl | Coaching professionnelle & Bilan de compétences"
+            />
+            <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs text-center">Coaching professionnelle &<br /> Bilan de compétences</p>
+          </a>
           <nav>
             <ul className="space-y-4 text-center text-base">
             {(items || []).map((item) => (
               <div key={item.id} className="relative group ">
                 <a
                   href={item.destination?.url || '#'} // Ajout de la vérification
-                  className={`p-5 block transition-colors duration-300 px-1 py-1 text-white uppercase font-lato tracking-wider"
+                  className={`p-5 block transition-colors duration-300 px-1 py-1 text-[#091369] font-lemonmilk font-medium"
                   }`}
                 >
                   {item.label}
