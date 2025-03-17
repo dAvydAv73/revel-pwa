@@ -126,14 +126,14 @@ export const MainMenu = ({
               href="https://www.linkedin.com/in/elsa-rousson/"
               target="_blank"
               rel="noopener noreferrer"
-              className="md:inline-block sr-only md:not-sr-only text-[#091369]"
+              className="md:inline-block sr-only md:not-sr-only text-[#091369]" 
             >
               <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 text-[#091369]" />
             </a>
             
             {/* Bouton rendez-vous */}
             <a
-              href="#"
+              href="https://revel-pwa.vercel.app/fr/rendez-vous"
               className="cta-nav text-[#091369] bg-[#E89B9B] hover:text-[#FFF7F7] px-3 py-3 flex items-center space-x-2 hover:bg-[#EF6363] transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px]"
             >
               Rendez-vous
