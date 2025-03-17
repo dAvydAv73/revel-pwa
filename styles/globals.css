@@ -325,4 +325,13 @@ strong{
   .cta-nav{
     font-size: 11px;
   }
+  .child-container {
+    margin-top: 18vh;
+  }
+  .homeCover .child-container  h2{
+    font-size: 1.4em!important;
+  }
+  .child-container .btn{
+    font-size: 12px;
+  }
 }

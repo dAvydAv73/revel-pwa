@@ -27,7 +27,7 @@ export const Cover = ({ children, background }) => {
           ></div>
           
           {/* Contenu children intact */}
-          <div className="relative z-10">
+          <div className="relative z-10 child-container">
             {children}
           </div>
         </div>
