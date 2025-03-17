@@ -131,12 +131,9 @@ export const BlockRenderer = ({ blocks }) => {
           );
         }
         case "core/columns": {
-          // Loggons à nouveau pour confirmer
-          console.log("Bloc de colonnes - attributs complets:", block.attributes);
           
           // Utiliser explicitement block.attributes pour récupérer verticalAlignment
           const verticalAlignment = block.attributes?.verticalAlignment || "";
-          console.log("verticalAlignment extrait:", verticalAlignment);
           
           return (
             <Columns
@@ -168,7 +165,6 @@ export const BlockRenderer = ({ blocks }) => {
         case "core/column": {
           // Extraction de l'alignement vertical de la colonne individuelle
           const columnVerticalAlignment = block.attributes?.verticalAlignment || "";
-          console.log(`Colonne ${index} - verticalAlignment:`, columnVerticalAlignment);
           
           // Déterminer la classe d'alignement vertical pour cette colonne
           let columnAlignClass = '';
@@ -358,6 +354,51 @@ export const BlockRenderer = ({ blocks }) => {
               dynamicTexts={dynamicTexts}
               dynamicTextColor={dynamicTextColor}
             />
+          );
+        }
+        case "acf/booking-iframe": {
+          console.log("Rendu du bloc de réservation à l'index", index, block);
+          
+          const data = block.attributes?.data || {};
+          
+          // Utiliser les noms de champs corrects tels qu'ils apparaissent dans le console.log
+          const iframeUrl = data.booking_url || '';
+          const heightValue = data.hauteur || 100;
+          const allowScrolling = data.allow_scrolling && data.allow_scrolling.includes('true');
+          const customId = data.blockcustomid || '';
+          const customClass = data.custom_class || '';
+          
+          console.log("Paramètres de l'iframe:", { 
+            iframeUrl, 
+            heightValue, 
+            allowScrolling, 
+            customId,
+            customClass 
+          });
+          
+          // Ne pas afficher l'iframe si aucune URL n'est définie
+          if (!iframeUrl) {
+            console.warn("URL de l'iframe non définie, le bloc ne sera pas rendu");
+            return null;
+          }
+          
+          return (
+            <div 
+              key={block.id || `booking-iframe-${index}`} 
+              className={`w-full mb-8 relative ${customClass}`}
+              style={{ height: `${heightValue}vh` }}
+              id={customId}
+            >
+              <iframe 
+                src={iframeUrl}
+                width="100%" 
+                height="100%" 
+                scrolling={allowScrolling ? 'yes' : 'no'} 
+                style={{ border: 0 }}
+                title="Système de réservation"
+                className="absolute inset-0"
+              />
+            </div>
           );
         }
         
