@@ -24,9 +24,7 @@ export const Footer = ({ items = [] }) => {
               </p>
             </a>
             <p className="text-sm text-center text-[#FFF7F7] font-nunito font-medium max-w-xl mt-4">
-              Révélez vous en découvrant votre type de personnalité MBTI : Je vous accompagne 
-              pour une meilleure connaissance de vous même et vous guide pour trouver 
-              votre voix professionnelle
+              Elsa ROUSSON, Coach professionnelle et consultante en bilan de compétences. Transformez vos talents en projet professionnel, Révélez vous !
             </p>
           </div>
 
