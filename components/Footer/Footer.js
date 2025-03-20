@@ -17,7 +17,7 @@ export const Footer = ({ items = [] }) => {
                 height={90}
                 width={200}
                 className="h-auto"
-                alt="Révèl | Coaching professionnelle & Bilan de compétences"
+                alt="Révèl | Coaching professionnel Bilan de compétences"
               />
               <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 text-center">
                 Coaching professionnelle &<br /> Bilan de compétences
