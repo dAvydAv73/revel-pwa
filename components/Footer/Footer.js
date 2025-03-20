@@ -20,7 +20,7 @@ export const Footer = ({ items = [] }) => {
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
               <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 text-center">
-                Coaching professionnelle &<br /> Bilan de compétences
+                Coaching professionnel Bilan de compétences
               </p>
             </a>
             <p className="text-sm text-center text-[#FFF7F7] font-nunito font-medium max-w-xl mt-4">

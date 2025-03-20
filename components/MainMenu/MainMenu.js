@@ -82,7 +82,7 @@ export const MainMenu = ({
                 className="h-auto"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs">Coaching professionnelle &<br /> Bilan de compétences</p>
+              <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs">Coaching professionnel Bilan de compétences</p>
             </a>
           </div>
           
