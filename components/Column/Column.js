@@ -50,7 +50,7 @@ export const Column = React.memo(({
     <div
       ref={ref}
       style={styles}
-      className={`px-2 py-5 ${customClasses} ${alignmentClass}`}
+      className={`px-2 py-5 column ${customClasses} ${alignmentClass}`}
       id={id} // Appliquer l'ID d'ancre
     >
       {children}

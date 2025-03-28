@@ -93,7 +93,9 @@ li{
   
 
 }
-
+.column p{
+  text-align: justify;
+}
 
 img.logo-img {
   margin: 0 auto;
