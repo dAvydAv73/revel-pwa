@@ -163,22 +163,22 @@ export const MainMenu = ({
 
       {/* Full-screen menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-[#FFF7F7] backdrop-blur bg-opacity-80 z-40 flex flex-col items-center justify-center text-white">
+        <div className="fixed inset-0 bg-[#091369] backdrop-blur bg-opacity-80 z-40 flex flex-col items-center justify-center text-white">
           <button
             onClick={toggleMenu}
-            className="absolute top-5 right-5 text-3xl text-[#091369]"
+            className="absolute top-5 right-5 text-3xl text-[#FFF7F7]"
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
           <a href="/" title="Révèl - Accueil" className="mb-16">
             <Image
-              src={LogoIconBlue}
+              src={LogoIconWhite}
               height={135}
               width={300}
               className=""
               alt="Révèl | Coaching professionnelle & Bilan de compétences"
             />
-            <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs text-center">Coaching professionnelle &<br /> Bilan de compétences</p>
+            <p className="text-[#FA1565] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs text-center">Coaching professionnelle &<br /> Bilan de compétences</p>
           </a>
           <nav>
             <ul className="space-y-4 text-center text-base">
@@ -194,7 +194,7 @@ export const MainMenu = ({
                 >
                   <a
                     href={item.destination?.url || '#'}
-                    className={`p-5 block transition-colors duration-300 px-1 py-1 text-[#091369] font-lemonmilk font-medium"}`}
+                    className={`p-5 block transition-colors duration-300 px-1 py-1 text-[#f7f7f7] font-lemonmilk font-medium"}`}
                   >
                     {item.label}
                   </a>
