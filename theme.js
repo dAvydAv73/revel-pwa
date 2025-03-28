@@ -22,5 +22,6 @@ export const theme = {
   dustyrose: "#E89B9B",
   navyblue: "#091369",
   softpearl: "#FFF7F7",
-  whispergrey: "#F3F3F8"
+  whispergrey: "#F3F3F8",
+  hotbloom:"#FA1565",
 };

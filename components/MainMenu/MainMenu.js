@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { ButtonLink } from "../ButtonLink";
 import Image from "next/image";
-import LogoIconBlue from "../../public/img/revel-blue-logo.svg";
+import LogoIconBlue from "../../public/img/logo_revel2.png";
+import LogoIconWhite from "../../public/img/logo_revel2_twist.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils, faBars, faTimes, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
@@ -62,12 +63,12 @@ export const MainMenu = ({
       <div
         className={`navbar fixed left-0 right-0 top-0 sm:top-0 sm:bottom-auto z-30 transition-all duration-300 
         ${isScrolled 
-          ? 'bg-[#FFF7F7] border-t sm:border-b border-gray-300 shadow-md scrolled' 
-          : 'bg-transparent border-t sm:border-b border-transparent'
+          ? 'bg-[#091369] shadow-md scrolled' 
+          : 'bg-transparent'
         }
-        h-[110px] sm:h-[120px]`}
+        h-[130px] sm:h-[120px]`}
       >
-        <div className="container mx-auto px-5 flex items-center justify-between h-[110px]">
+        <div className="container mx-auto px-5 flex items-center justify-between h-[130px]">
           {/* Logo - animation immédiate */}
           <div
             className={`logoLink flex-3 transition-opacity duration-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
@@ -76,13 +77,14 @@ export const MainMenu = ({
             <a href="/" title="Révèl - Accueil" className="logo-nav-link">
               <Image
                 priority
-                src={LogoIconBlue}
-                height={90}
-                width={200}
-                className="h-auto"
+                src={isScrolled ? LogoIconWhite : LogoIconBlue}
+                width={170}
+                className="h-auto -mt-5"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className="text-[#E89B9B] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs">Coaching professionnel <br />Bilan de compétences</p>
+              <p className={`font-lemonmilk font-medium text-xs -mt-4 mobile-text-xs ml-5 ${
+                isScrolled ? 'text-white' : 'text-[#091369]'
+              }`}>Coaching professionnel <br />Bilan de compétences</p>
             </a>
           </div>
           
@@ -101,8 +103,8 @@ export const MainMenu = ({
               >
                 <a
                   href={item.destination?.url || '#'}
-                  className={`p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 text-[#091369] drop-shadow-md ${
-                    isScrolled ? "" : ""
+                  className={`p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 drop-shadow-md ${
+                    isScrolled ? "text-white" : "text-[#091369]"
                   }`}
                 >
                   {item.label}
@@ -126,15 +128,21 @@ export const MainMenu = ({
               href="https://www.linkedin.com/in/elsa-rousson/"
               target="_blank"
               rel="noopener noreferrer"
-              className="md:inline-block sr-only md:not-sr-only text-[#091369]"
+              className="md:inline-block sr-only md:not-sr-only"
             >
-              <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 text-[#091369]" />
+              <FontAwesomeIcon icon={faLinkedin} className={`w-5 h-5 ${
+                isScrolled ? "text-white" : "text-[#091369]"
+              }`} />
             </a>
             
             {/* Bouton rendez-vous */}
             <a
               href="https://revel-pwa.vercel.app/fr/rendez-vous#booking"
-              className="cta-nav text-[#091369] bg-[#E89B9B] hover:text-[#FFF7F7] px-3 py-3 flex items-center space-x-2 hover:bg-[#EF6363] transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px]"
+              className={`cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] ${
+                isScrolled 
+                  ? 'text-[#091369] bg-white hover:bg-[#FA1565] hover:text-white' 
+                  : 'text-[#FFF7F7] bg-[#091369] hover:bg-[#FA1565] hover:text-[#FFF7F7]'
+              }`}
             >
               Rendez-vous
               <FontAwesomeIcon icon={faCalendarDay} className="ml-2" />
@@ -145,7 +153,9 @@ export const MainMenu = ({
               onClick={toggleMenu}
               className="xl:hidden text-xl ml-2"
             >
-              <FontAwesomeIcon icon={faBars} className="w-5 h-5 text-[#091369]"/>
+              <FontAwesomeIcon icon={faBars} className={`w-5 h-5 ${
+                isScrolled ? "text-white" : "text-[#091369]"
+              }`}/>
             </button>
           </div>
         </div>
