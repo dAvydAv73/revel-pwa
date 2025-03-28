@@ -39,6 +39,9 @@ NextJs/styles/globals.css
 .hero-anim-dynamic-text.text-exit {
   animation: slideOutToTop 0.5s forwards;
 }
+.py-4 img{
+  margin-bottom: 1em;
+}
 
 @keyframes slideInFromBottom {
   0% {
