@@ -21,7 +21,7 @@ export const Cover = ({ children, background }) => {
           <div 
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(180deg, rgba(247,247,247,0.6) 0%, rgba(9,19,10,0.5) 50%, rgba(247, 255, 247,0.35) 100%)',
+              background: 'linear-gradient(135deg, rgba(247,247,247,0.6) 0%, rgba(9,19,105,0.2) 50%, rgba(247,255,247,0.15) 100%)',
               pointerEvents: 'none', // Permet les clics à travers cette div
             }}
           ></div>
