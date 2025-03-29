@@ -137,7 +137,7 @@ export const MainMenu = ({
             {/* Bouton rendez-vous */}
             <a
               href="https://revel-pwa.vercel.app/fr/rendez-vous#booking"
-              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] text-[#091369] bg-transparent border border-[#091369] hover:bg-[#FA1565] hover:border-[#FA1565] hover:text-white"              
+              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] text-[#091369] bg-[#f7f7f7] border border-[#091369] hover:bg-[#FA1565] hover:border-[#FA1565] hover:text-white"              
             >
               Rendez-vous
               <FontAwesomeIcon icon={faCalendarDay} className="ml-2" />
