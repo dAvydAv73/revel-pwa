@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { ButtonLink } from "../ButtonLink";
 import Image from "next/image";
-import LogoIconBlue from "../../public/img/logo_revel2.png";
-import LogoIconWhite from "../../public/img/logo_revel2_twist.png";
+import LogoIconBlue from "../../public/img/revel3.svg";
+import LogoIconWhite from "../../public/img/revel3_switch.svg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils, faBars, faTimes, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
@@ -82,9 +82,9 @@ export const MainMenu = ({
                 className="h-auto -mt-5"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className={`font-lemonmilk font-medium text-xs -mt-4 mobile-text-xs ml-5 ${
+              <p className={`font-lemonmilk font-medium text-xs mobile-text-xs ml-2 ${
                 isScrolled ? 'text-white' : 'text-[#091369]'
-              }`}>Coaching professionnel <br />Bilan de compétences</p>
+              }`}>Coaching professionnel<br />Bilan de compétences</p>
             </a>
           </div>
           
