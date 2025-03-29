@@ -63,7 +63,7 @@ export const MainMenu = ({
       <div
         className={`navbar fixed left-0 right-0 top-0 sm:top-0 sm:bottom-auto z-30 transition-all duration-300 
         ${isScrolled 
-          ? 'bg-[#091369] shadow-md scrolled' 
+          ? 'bg-[#f3f3f8]/80 shadow-md scrolled backdrop-blur' 
           : 'bg-transparent'
         }
         h-[130px] sm:h-[120px]`}
@@ -77,14 +77,12 @@ export const MainMenu = ({
             <a href="/" title="Révèl - Accueil" className="logo-nav-link">
               <Image
                 priority
-                src={isScrolled ? LogoIconWhite : LogoIconBlue}
+                src={LogoIconBlue}
                 width={170}
                 className="h-auto -mt-5"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className={`font-lemonmilk font-medium text-xs mobile-text-xs ml-2 ${
-                isScrolled ? 'text-white' : 'text-[#091369]'
-              }`}>Coaching professionnel<br />Bilan de compétences</p>
+              <p className="font-lemonmilk font-medium text-xs mobile-text-xs ml-2 text-[#091369]">Coaching professionnel<br />Bilan de compétences</p>
             </a>
           </div>
           
@@ -103,9 +101,7 @@ export const MainMenu = ({
               >
                 <a
                   href={item.destination?.url || '#'}
-                  className={`p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 drop-shadow-md ${
-                    isScrolled ? "text-white" : "text-[#091369]"
-                  }`}
+                  className="p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 drop-shadow-md text-[#091369]"
                 >
                   {item.label}
                 </a>
@@ -130,19 +126,13 @@ export const MainMenu = ({
               rel="noopener noreferrer"
               className="md:inline-block sr-only md:not-sr-only"
             >
-              <FontAwesomeIcon icon={faLinkedin} className={`w-5 h-5 ${
-                isScrolled ? "text-white" : "text-[#091369]"
-              }`} />
+              <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 text-[#091369]" />
             </a>
             
             {/* Bouton rendez-vous */}
             <a
               href="https://revel-pwa.vercel.app/fr/rendez-vous#booking"
-              className={`cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] ${
-                isScrolled 
-                  ? 'text-[#091369] bg-white hover:bg-[#FA1565] hover:text-white' 
-                  : 'text-[#FFF7F7] bg-[#091369] hover:bg-[#FA1565] hover:text-[#FFF7F7]'
-              }`}
+              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] text-[#091369] bg-transparent border border-[#091369] hover:bg-[#FA1565] hover:border-[#FA1565] hover:text-white"              
             >
               Rendez-vous
               <FontAwesomeIcon icon={faCalendarDay} className="ml-2" />
