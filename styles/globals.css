@@ -94,6 +94,9 @@ ul{
 }
 li{
   
+.revel-text-shadow{
+  text-shadow: 1px 2px 1px rgba(9,19,105, 0.6);
+}
 
 }
 .column p{

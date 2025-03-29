@@ -101,7 +101,12 @@ export const MainMenu = ({
               >
                 <a
                   href={item.destination?.url || '#'}
-                  className="p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 drop-shadow-md text-[#091369]"
+                  className={`p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 drop-shadow-md 
+                   ${isScrolled
+                    ? 'text-[#091369]' 
+                    : 'text-[#f7f7f7] revel-text-shadow'
+                    }
+                `}
                 >
                   {item.label}
                 </a>
