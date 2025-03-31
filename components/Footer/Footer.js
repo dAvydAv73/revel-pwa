@@ -1,25 +1,28 @@
 import Image from "next/image";
-import LogoIconWhite from "../../public/img/revel3_switch.svg";
+import LogoIconWhite from "../../public/img/revel5_switch.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import Reviews from "../Reviews";
 
 export const Footer = ({ items = [] }) => {
-  return (
+  return (  
+    <>
+    <Reviews />
+
     <footer>
       <div className="bg-[#091369] text-[#FFF7F7]">
         <div className="container mx-auto px-5 py-10">
           {/* Section supérieure avec logo et description */}
           <div className="flex flex-col items-center mb-8">
-            <a href="/" title="Révèl - Accueil" className="logo-footer-link mb-4">
+            <a href="/" title="Révèl - Accueil" className="logo-footer-link mb-4 text-center">
               <Image
                 priority
                 src={LogoIconWhite}
-                height={90}
-                width={200}
-                className="h-auto"
+                width={120}
+                className="h-auto mx-auto"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className="text-[#FA1565] font-lemonmilk font-medium text-xs text-center">
+              <p className="text-[#FA1565] font-lemonmilk font-medium text-xs mt-2 text-center">
                 Coaching professionnel <br />Bilan de compétences
               </p>
             </a>
@@ -74,5 +77,6 @@ export const Footer = ({ items = [] }) => {
         </div>
       </div>
     </footer>
+    </>
   );
 }

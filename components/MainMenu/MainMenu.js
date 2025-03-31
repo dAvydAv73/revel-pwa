@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { ButtonLink } from "../ButtonLink";
 import Image from "next/image";
-import LogoIconBlue from "../../public/img/revel3.svg";
-import LogoIconWhite from "../../public/img/revel3_switch.svg";
+import LogoIconBlue from "../../public/img/revel5.svg";
+import LogoIconWhite from "../../public/img/revel5_switch.svg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils, faBars, faTimes, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
@@ -78,11 +78,11 @@ export const MainMenu = ({
               <Image
                 priority
                 src={LogoIconBlue}
-                width={170}
+                width={140}
                 className="h-auto -mt-5"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className="font-lemonmilk font-medium text-xs mobile-text-xs ml-2 text-[#091369]">Coaching professionnel<br />Bilan de compétences</p>
+              <p className="font-lemonmilk font-medium text-xs mobile-text-xs text-[#091369] mt-1">Coaching professionnel<br />Bilan de compétences</p>
             </a>
           </div>
           
@@ -131,13 +131,18 @@ export const MainMenu = ({
               rel="noopener noreferrer"
               className="md:inline-block sr-only md:not-sr-only"
             >
-              <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 text-[#091369]" />
+              <FontAwesomeIcon icon={faLinkedin} className={`w-5 h-5
+                ${isScrolled
+                    ? 'text-[#091369]' 
+                    : 'text-[#f7f7f7] revel-text-shadow'
+                    }
+              `} />
             </a>
             
             {/* Bouton rendez-vous */}
             <a
               href="https://revel-pwa.vercel.app/fr/rendez-vous#booking"
-              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] text-[#091369] bg-[#f7f7f7] border border-[#091369] hover:bg-[#FA1565] hover:border-[#FA1565] hover:text-white"              
+              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] hover:bg-[#f7f7f7]  bg-[#FA1565]  text-white"              
             >
               Rendez-vous
               <FontAwesomeIcon icon={faCalendarDay} className="ml-2" />
