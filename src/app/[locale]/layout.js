@@ -4,6 +4,7 @@ import { Nunito } from "next/font/google";
 import localFont from "next/font/local";
 import "../../../styles/globals.css";
 import { getMenu } from "../../../utils/getMenu"; // Une seule importation de getMenu
+import { getSettings } from "../../../utils/getSettings"; 
 import { MainMenu } from "../../../components/MainMenu";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -71,6 +72,8 @@ const lemonMilk = localFont({
 export default async function RootLayout({ children, params }) {
   const locale = params.locale; // Correction de la destructuration
   const menuData = await getMenu(locale); // Récupération des données du menu
+  const settingsData = await getSettings(locale);
+
 
   // Set the locale for the request
   unstable_setRequestLocale(locale);
@@ -94,8 +97,9 @@ export default async function RootLayout({ children, params }) {
           <div className="content" id="content">
             {children}
           </div>
+          <Footer items={menuData.mainMenuItems} footerData={settingsData.footerSettings}/>
+
         </NextIntlClientProvider>
-        <Footer items={menuData.mainMenuItems} />
       </body>
     </html>
   );
