@@ -16,6 +16,7 @@ import { ListItemContent } from "../ListItemContent/ListItemContent";
 import { Images2Block } from "../Images2Block/Images2Block";
 import { SliderBlock } from "../SliderBlock";
 import { HeroAnim } from "../HeroAnim";
+import PartnerBlock from "../PartnerBlock";
 
 import { useEffect } from 'react';
 
@@ -399,6 +400,15 @@ export const BlockRenderer = ({ blocks }) => {
                 className="absolute inset-0"
               />
             </div>
+          );
+        }
+        case "acf/partners-block": {
+          console.log("Affichage du bloc Partenaires", block);
+          return (
+            <PartnerBlock 
+              key={block.id || `partner-block-${index}`}
+              block={block}
+            />
           );
         }
         

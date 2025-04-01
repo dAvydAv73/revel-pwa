@@ -412,7 +412,24 @@ strong{
     padding-bottom: 3em
   }
 }
-
+.card-item {
+  background: #FFEEF0;
+  padding-left: 1em;
+  display: block;
+  margin: 0 1em;
+  padding-right: 1em;
+}
+.content .card-item h3{
+  font-family: var(--font-lemon-milk);
+  line-height: 1.4em;
+}
+.content .card-item h4{
+  font-family: var(--font-nunito);
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin-left: 1.8em;
+  margin-right: 1.8em;
+}
 /* Dans global.css */
 @media (max-width: 480px) {
   .hero-anim-container {
