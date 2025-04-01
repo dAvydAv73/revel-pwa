@@ -248,6 +248,10 @@ h5{
 }
 p, li {
   @apply font-nunito;
+  color: #212121;
+}
+li{
+  color: #212121!important;
 }
 
 body{
@@ -290,6 +294,8 @@ body{
 }
 .homeCover.cover-smaller{
   height: 50vh;
+  background-position: 10% 50%!important;
+
 }
 .linkedin-link{
   width: 60px!important;
@@ -298,7 +304,6 @@ body{
 .homeCover h2, 
 .homeCover h3,
 .homeCover p{
-  
   text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.6);
 
 }
@@ -346,6 +351,16 @@ strong{
 }
 .horairesinside{
   padding-top: 6em
+}
+
+.follow-us img{
+  width: 60px!important;
+  height: 60px!important;
+  margin-top: 12px
+}
+.follow-us h5{
+  font-family: var(--font-lemon-milk);
+
 }
 /* Styles pour les écrans de taille moyenne et supérieure */
 @media (min-width: 768px) {

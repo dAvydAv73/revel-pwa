@@ -3,6 +3,7 @@ import Image from "next/image";
 import LogoIconWhite from "../../public/img/revel5_switch.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import Reviews from "../Reviews";
 import { useLocale } from "next-intl";
 
@@ -36,9 +37,9 @@ export const Footer = ({ items = [], footerData = null }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Suivez-moi sur LinkedIn"
-                      className="text-neutral-50 hover:text-[#0077B5] transition-all duration-300 mt-4 inline-block"
+                      className="text-white hover:text-[#FA1565] transition-all duration-300  inline-block"
                     >
-                      <FontAwesomeIcon icon={faLinkedin} className="w-6 h-6" /> Elsa Rousson
+                      <FontAwesomeIcon icon={faLinkedin} className="w-8 h-8" /> Elsa Rousson
                   </a>
                 
                 {footerData && footerData.description && (
@@ -52,21 +53,23 @@ export const Footer = ({ items = [], footerData = null }) => {
               {/* Deuxième colonne - Informations de contact */}
               <div className="flex flex-col">
                 {footerData && (
-                  <div className="text-sm font-nunito font-medium lg:pt-[120px]">
-                    {footerData.adresse && <p className="mb-2">{footerData.adresse}</p>}
+                  <div className="text-sm font-nunito font-medium lg:pt-[140px]">
                     
                     {footerData.mail && (
                       <p className="mb-2">
-                        Mail: <a href={`mailto:${footerData.mail}`} className="text-[#FA1565]">{footerData.mail}</a>
+                      <FontAwesomeIcon icon={faEnvelope} className="w-6 h-6" />
+                      <a href={`mailto:${footerData.mail}`} className="hover:text-[#FA1565] underline text-white">{footerData.mail}</a>
                       </p>
                     )}
                     
                     {footerData.telephone && (
                       <p className="mb-2">
-                        Tél: <a href={`tel:${footerData.telephone}`} className="text-[#FA1565]">{footerData.telephone}</a>
+                      <FontAwesomeIcon icon={faPhone} className="w-6 h-6" />
+                      <a href={`tel:${footerData.telephone}`} className="hover:text-[#FA1565] underline text-white">{footerData.telephone}</a>
                       </p>
                     )}
-                    
+                    {footerData.adresse && <p className="mb-2">{footerData.adresse}</p>}
+
                     
                   </div>
                 )}

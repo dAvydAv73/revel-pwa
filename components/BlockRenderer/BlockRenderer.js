@@ -255,7 +255,7 @@ export const BlockRenderer = ({ blocks }) => {
         case "core/list": {
           return (
             <div key={block.id || `list-${index}`} className="space-y-2">
-              <ul className="mb-16 mt-16">
+              <ul className="mb-2 mt-2">
                 {block.innerBlocks && Array.isArray(block.innerBlocks) && block.innerBlocks.length > 0 ? (
                   block.innerBlocks.map((innerBlock, innerIndex) => (
                     <BlockRenderer

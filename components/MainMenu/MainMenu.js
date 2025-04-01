@@ -129,9 +129,9 @@ export const MainMenu = ({
               href="https://www.linkedin.com/in/elsa-rousson/"
               target="_blank"
               rel="noopener noreferrer"
-              className="md:inline-block sr-only md:not-sr-only"
+              className="hidden md:inline-block" // Masqué sur mobile, visible sur md et plus
             >
-              <FontAwesomeIcon icon={faLinkedin} className={`w-5 h-5
+              <FontAwesomeIcon icon={faLinkedin} size="lg" className={`w-8 h-8
                 ${isScrolled
                     ? 'text-[#091369]' 
                     : 'text-[#f7f7f7] revel-text-shadow'
@@ -142,7 +142,7 @@ export const MainMenu = ({
             {/* Bouton rendez-vous */}
             <a
               href="https://revel-pwa.vercel.app/fr/rendez-vous#booking"
-              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] hover:bg-[#f7f7f7]  bg-[#FA1565]  text-white"              
+              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] cursor-pointer  bg-[#FA1565]  text-white"              
             >
               Rendez-vous
               <FontAwesomeIcon icon={faCalendarDay} className="ml-2" />
@@ -166,7 +166,7 @@ export const MainMenu = ({
         <div className="fixed inset-0 bg-[#091369] backdrop-blur bg-opacity-80 z-40 flex flex-col items-center justify-center text-white">
           <button
             onClick={toggleMenu}
-            className="absolute top-5 right-5 text-3xl text-[#FFF7F7]"
+            className="absolute top-5 right-5 text-3xl text-[#091369]"
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
@@ -178,7 +178,9 @@ export const MainMenu = ({
               className=""
               alt="Révèl | Coaching professionnelle & Bilan de compétences"
             />
-            <p className="text-[#FA1565] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs text-center">Coaching professionnelle &<br /> Bilan de compétences</p>
+            <p className="text-[#FA1565] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs text-center">
+              Coaching professionnelle &<br /> Bilan de compétences
+            </p>
           </a>
           <nav>
             <ul className="space-y-4 text-center text-base">
