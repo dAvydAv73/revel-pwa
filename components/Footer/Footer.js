@@ -44,7 +44,7 @@ export const Footer = ({ items = [], footerData = null }) => {
                 
                 {footerData && footerData.description && (
                   <div 
-                    className="text-sm mt-4"
+                    className="text-sm mt-4 text-white"
                     dangerouslySetInnerHTML={{ __html: footerData.description }}
                   />
                 )}
@@ -57,18 +57,18 @@ export const Footer = ({ items = [], footerData = null }) => {
                     
                     {footerData.mail && (
                       <p className="mb-2">
-                      <FontAwesomeIcon icon={faEnvelope} className="w-6 h-6" />
+                      <FontAwesomeIcon icon={faEnvelope} className="w-6 h-6 text-white" />
                       <a href={`mailto:${footerData.mail}`} className="hover:text-[#FA1565] underline text-white">{footerData.mail}</a>
                       </p>
                     )}
                     
                     {footerData.telephone && (
                       <p className="mb-2">
-                      <FontAwesomeIcon icon={faPhone} className="w-6 h-6" />
+                      <FontAwesomeIcon icon={faPhone} className="w-6 h-6 text-white" />
                       <a href={`tel:${footerData.telephone}`} className="hover:text-[#FA1565] underline text-white">{footerData.telephone}</a>
                       </p>
                     )}
-                    {footerData.adresse && <p className="mb-2">{footerData.adresse}</p>}
+                    {footerData.adresse && <p className="mb-2 text-white">{footerData.adresse}</p>}
 
                     
                   </div>
