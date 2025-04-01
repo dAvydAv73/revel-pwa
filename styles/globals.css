@@ -288,13 +288,17 @@ body{
 .homeCover img.object-cover{
 
 }
-
-
+.homeCover.cover-smaller{
+  height: 50vh;
+}
+.linkedin-link{
+  width: 60px!important;
+  height: 60px!important;
+}
+.homeCover h2, 
+.homeCover h3,
 .homeCover p{
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-weight: 300;
-  font-size: 0.9em;
+  
   text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.6);
 
 }

@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { useTranslations } from 'next-intl';
-import LogoIconBlue from "../../public/img/revel-blue-logo.svg";
 
-export const Cover = ({ children, background }) => {
+export const Cover = ({ children, background, customClasses = "" }) => {
   const t = useTranslations('Home.Cover');
   return (
   
       <div 
-          className="flex items-left flex-col h-[70vh] md:h-[90vh] lg:h-screen homeCover cover-container min-h-[400px] max-h-[900px] pb-20"
+          className={`flex items-left flex-col h-[70vh] md:h-[90vh] lg:h-screen homeCover cover-container min-h-[400px] max-h-[900px] pb-20 ${customClasses}`}
           // Conservez votre classe container existante
           style={{
             position: 'relative',

@@ -124,7 +124,11 @@ export const BlockRenderer = ({ blocks }) => {
         }
         case "core/cover": {
           return (
-            <Cover key={block.id || `cover-${index}`} background={block.attributes?.url || ""}>
+            <Cover 
+              key={block.id || `cover-${index}`} 
+              background={block.attributes?.url || ""}
+              customClasses={customClasses}
+            >
               {block.innerBlocks && Array.isArray(block.innerBlocks) && block.innerBlocks.length > 0 ? (
                 <BlockRenderer blocks={block.innerBlocks} />
               ) : null}
