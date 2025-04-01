@@ -248,10 +248,12 @@ h5{
 }
 p, li {
   @apply font-nunito;
-  color: #212121;
 }
 li{
   color: #212121!important;
+}
+.content p{
+  color: #212121
 }
 
 body{
