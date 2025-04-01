@@ -109,7 +109,7 @@ export const Footer = ({ items = [], footerData = null }) => {
                       <li key={item.id}>
                         <a
                           href={item.destination?.url}
-                          className="font-lemonmilk font-medium hover:underline transition-all duration-300 text-xs"
+                          className="font-lemonmilk font-medium hover:underline transition-all duration-300 text-xs text-white"
                         >
                           {item.label}
                         </a>
@@ -118,7 +118,7 @@ export const Footer = ({ items = [], footerData = null }) => {
                     <li>
                       <a
                         href={`/${locale}/mentions-legales`}
-                        className="font-lemonmilk font-medium hover:underline transition-all duration-300 text-xs"
+                        className="font-lemonmilk font-medium hover:underline transition-all duration-300 text-xs text-white"
                       >
                         Mentions légales
                       </a>
