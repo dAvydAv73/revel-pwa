@@ -4,16 +4,17 @@ import React, { useState, useEffect } from "react";
 import { ButtonLink } from "../ButtonLink";
 import Image from "next/image";
 import LogoIconBlue from "../../public/img/revel5.svg";
-import LogoIconWhite from "../../public/img/revel5_switch.svg";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils, faBars, faTimes, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
+import { faUtensils, faBars, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import { useLocale } from "next-intl";
+import { MegaMenu } from "../MegaMenu"; // Import du composant MegaMenu
 
 export const MainMenu = ({
   items,
+  // Ajout de footerData avec une valeur par défaut null pour éviter les erreurs
+  footerData = null
 }) => {
   const locale = useLocale();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,15 +67,15 @@ export const MainMenu = ({
           ? 'bg-[#f3f3f8]/80 shadow-md scrolled backdrop-blur' 
           : 'bg-transparent'
         }
-        h-[130px] sm:h-[120px]`}
+        h-[120px] sm:h-[120px]`}
       >
-        <div className="container mx-auto px-5 flex items-center justify-between h-[130px]">
+        <div className="container mx-auto px-5 flex items-center justify-between h-[120px]">
           {/* Logo - animation immédiate */}
           <div
             className={`logoLink flex-3 transition-opacity duration-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
             style={{ transitionDuration: '0.5s' }}
           >
-            <a href="/" title="Révèl - Accueil" className="logo-nav-link">
+            <a href="/" title="Révèl - Accueil" className="logo-nav-link items-center">
               <Image
                 priority
                 src={LogoIconBlue}
@@ -134,7 +135,7 @@ export const MainMenu = ({
               <FontAwesomeIcon icon={faLinkedin} size="lg" className={`w-8 h-8
                 ${isScrolled
                     ? 'text-[#091369]' 
-                    : 'text-[#f7f7f7] revel-text-shadow'
+                    : 'text-[#f7f7f7] header-linkedin-link'
                     }
               `} />
             </a>
@@ -152,60 +153,23 @@ export const MainMenu = ({
             <button
               onClick={toggleMenu}
               className="xl:hidden text-xl ml-2"
+              aria-label="Ouvrir le menu"
             >
               <FontAwesomeIcon icon={faBars} className={`w-5 h-5 ${
-                isScrolled ? "text-white" : "text-[#091369]"
+                isScrolled ? "text-[#091369]" : "text-[#f7f7f7] header-linkedin-link"
               }`}/>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Full-screen menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-[#091369] backdrop-blur bg-opacity-80 z-40 flex flex-col items-center justify-center text-white">
-          <button
-            onClick={toggleMenu}
-            className="absolute top-5 right-5 text-3xl text-[#091369]"
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
-          <a href="/" title="Révèl - Accueil" className="mb-16">
-            <Image
-              src={LogoIconWhite}
-              height={135}
-              width={300}
-              className=""
-              alt="Révèl | Coaching professionnelle & Bilan de compétences"
-            />
-            <p className="text-[#FA1565] font-lemonmilk font-medium text-xs -mt-2 mobile-text-xs text-center">
-              Coaching professionnelle &<br /> Bilan de compétences
-            </p>
-          </a>
-          <nav>
-            <ul className="space-y-4 text-center text-base">
-              {(items || []).map((item, index) => (
-                <div 
-                  key={item.id} 
-                  className="relative group"
-                  style={{ 
-                    animation: 'slideDown 0.4s ease-out forwards',
-                    animationDelay: `${index * 0.1}s`,
-                    opacity: 0 
-                  }}
-                >
-                  <a
-                    href={item.destination?.url || '#'}
-                    className={`p-5 block transition-colors duration-300 px-1 py-1 text-[#f7f7f7] font-lemonmilk font-medium"}`}
-                  >
-                    {item.label}
-                  </a>
-                </div>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      )}
+      {/* Intégration du composant MegaMenu - version mobile uniquement */}
+      <MegaMenu 
+        isMenuOpen={isMenuOpen} 
+        toggleMenu={toggleMenu} 
+        items={items}
+        footerData={footerData}
+      />
     </>
   );
 };

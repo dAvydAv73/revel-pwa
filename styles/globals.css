@@ -23,7 +23,7 @@ NextJs/styles/globals.css
 /* heroAnim */
 .hero-anim-container {
   overflow: hidden;
-  margin-bottom: 3em;
+  margin-bottom: 0.4em;
   margin-top:12em;
 }
 
@@ -135,6 +135,16 @@ img.label-item {
   text-decoration: underline;
 }
 
+.logo-nav-link{
+  padding-top:0.8em
+}
+.logo-nav-link{
+  filter: drop-shadow(1px 1px 1px rgba(247, 247, 247, .6));
+}
+.header-linkedin-link{
+  filter: drop-shadow(1px 1px 1px rgba(9,19,105, .6));
+
+}
 
 @keyframes slideInFromBottom {
   0% {
@@ -187,11 +197,17 @@ ul{
 }
 li{
   
-  .revel-text-shadow{
-    text-shadow: 1px 2px 1px rgba(9,19,105, 0.6);
-  }
 
 }
+.revel-text-shadow{
+  text-shadow: 1px 1px 1px rgba(9,19,105, 0.6);
+}
+.hero-cta-container,
+.hero-cta-container .py-4{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .column p{
   text-align: justify;
 }
@@ -306,7 +322,7 @@ body{
 .homeCover h2, 
 .homeCover h3,
 .homeCover p{
-  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 2px 1px rgba(9,19,105, 0.6);
 
 }
 .content h2{
@@ -457,17 +473,24 @@ strong{
     margin-top: 10em;
     margin-bottom: 0;
   }
-  .hero-cta-container {
-    margin-top: 0;
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
+  .hero-cta-container .column{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .content h2{
+    font-size: 1.6em;
+    line-height: 1.9em;
+  }
+  .content h3{
+    font-size: 1.3em;
+    line-height: 1.6em;
   }
 
   .mobile-text-xs {
     font-size: 10px !important;
   }
   .logo-nav-link img{
-    width: 180px;
+    width: 140px;
   }
   .logo-nav-link p{
     font-size: 9px;

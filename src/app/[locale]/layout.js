@@ -1,15 +1,14 @@
 import {NextIntlClientProvider} from 'next-intl';
-import {unstable_setRequestLocale,getMessages} from 'next-intl/server';
+import {unstable_setRequestLocale, getMessages} from 'next-intl/server';
 import { Nunito } from "next/font/google";
 import localFont from "next/font/local";
 import "../../../styles/globals.css";
-import { getMenu } from "../../../utils/getMenu"; // Une seule importation de getMenu
-import { getSettings } from "../../../utils/getSettings"; 
+import { getMenu } from "../../../utils/getMenu";
+import { getSettings } from "../../../utils/getSettings";
 import { MainMenu } from "../../../components/MainMenu";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Footer } from '../../../components/Footer';
-
 config.autoAddCss = false;
 
 // Configuration pour les polices Google Fonts
@@ -68,20 +67,20 @@ const lemonMilk = localFont({
   variable: "--font-lemon-milk",
 });
 
-
 export default async function RootLayout({ children, params }) {
-  const locale = params.locale; // Correction de la destructuration
-  const menuData = await getMenu(locale); // Récupération des données du menu
+  const locale = params.locale;
+  const menuData = await getMenu(locale);
   const settingsData = await getSettings(locale);
-
-
+  
+  // Récupération des données du footer pour les passer au menu
+  const footerSettings = settingsData?.footerSettings || null;
+  
   // Set the locale for the request
   unstable_setRequestLocale(locale);
-
-  // Providing all messages to the client
-  // side is the easiest way to get started
+  
+  // Providing all messages to the client side
   const messages = await getMessages(locale);
-
+  
   return (
     <html lang={locale} className={`${nunito.variable} ${lemonMilk.variable}`}>
       <body>
@@ -93,12 +92,12 @@ export default async function RootLayout({ children, params }) {
             callToAction2Label={menuData.callToAction2Label}
             callToAction2Destination={menuData.callToAction2Destination}
             items={menuData.mainMenuItems}
+            footerData={footerSettings} // Passage des données du footer au MainMenu avec valeur sécurisée
           />
           <div className="content" id="content">
             {children}
           </div>
-          <Footer items={menuData.mainMenuItems} footerData={settingsData.footerSettings}/>
-
+          <Footer items={menuData.mainMenuItems} footerData={footerSettings} />
         </NextIntlClientProvider>
       </body>
     </html>
