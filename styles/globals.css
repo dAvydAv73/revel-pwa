@@ -318,8 +318,9 @@ body{
 
 }
 .homeCover.cover-smaller{
-  height: 50vh;
-  background-position: 10% 50%!important;
+  height: 60vh;
+  background-position-x: 3em !important;
+  background-position-y: -3em !important;
 
 }
 .linkedin-link{
@@ -485,6 +486,10 @@ strong{
 }
 /* Dans global.css */
 @media (max-width: 480px) {
+  .homeCover.cover-smaller{
+    background-position-x: -8em !important;
+    background-position-y: -3em !important;
+  }
   .hero-anim-container {
     margin-top: 10em;
     margin-bottom: 0;
