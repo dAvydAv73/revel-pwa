@@ -461,11 +461,15 @@ strong{
   }
 }
 .card-item {
-  background: #FFEEF0;
+  background: #FFF7F7;
   padding-left: 1em;
   display: block;
   margin: 0 1em;
   padding-right: 1em;
+}
+.content .card-item img{
+  max-width: 90px;
+  margin: 0 auto;
 }
 .content .card-item h3{
   font-family: var(--font-lemon-milk);
