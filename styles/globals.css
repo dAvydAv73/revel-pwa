@@ -5,7 +5,14 @@ NextJs/styles/globals.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/*  CSS avec scroll-margin-top */
+html {
+  scroll-behavior: smooth; /* Pour un défilement fluide */
+}
 
+[id] {
+  scroll-margin-top: 120px; /* Ajustez cette valeur à la hauteur de votre navbar */
+}
 .font-lato {
   font-family: var(--font-lato), sans-serif;
 }
