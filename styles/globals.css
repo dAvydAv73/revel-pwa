@@ -470,6 +470,7 @@ strong{
 .content .card-item img{
   max-width: 90px;
   margin: 0 auto;
+  width: 90px;
 }
 .content .card-item h3{
   font-family: var(--font-lemon-milk);
