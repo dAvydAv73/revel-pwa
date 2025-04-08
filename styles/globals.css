@@ -146,7 +146,7 @@ img.label-item {
   padding-top:0.8em
 }
 .logo-nav-link{
-  filter: drop-shadow(1px 1px 1px rgba(247, 247, 247, .6));
+  filter: drop-shadow(1px 1px 1px rgba(247, 247, 247, .3));
 }
 .header-linkedin-link{
   filter: drop-shadow(1px 1px 1px rgba(9,19,105, .6));
@@ -329,7 +329,7 @@ body{
 .homeCover h2, 
 .homeCover h3,
 .homeCover p{
-  text-shadow: 1px 2px 1px rgba(9,19,105, 0.6);
+  text-shadow: 1px 2px 1px rgba(9,19,105, 0.3);
 
 }
 .content h2{
@@ -386,6 +386,10 @@ strong{
 .follow-us h5{
   font-family: var(--font-lemon-milk);
 
+}
+.icon-presta{
+  width: 90px;
+  margin: 0 auto;
 }
 /* Styles pour les écrans de taille moyenne et supérieure */
 @media (min-width: 768px) {
@@ -494,7 +498,7 @@ strong{
   }
 
   .mobile-text-xs {
-    font-size: 10px !important;
+    font-size: 9px !important;
   }
   .logo-nav-link img{
     width: 140px;

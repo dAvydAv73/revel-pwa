@@ -79,11 +79,11 @@ export const MainMenu = ({
               <Image
                 priority
                 src={LogoIconBlue}
-                width={140}
+                width={150}
                 className="h-auto -mt-5"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className="font-lemonmilk font-medium text-xs mobile-text-xs text-[#091369] mt-1">Coaching professionnel<br />Bilan de compétences</p>
+              <p className="font-lemonmilk font-medium text-xs mobile-text-xs text-[#091369] mt-1">Bilan de compétences<br />Coaching professionnel</p>
             </a>
           </div>
           
@@ -132,7 +132,7 @@ export const MainMenu = ({
               rel="noopener noreferrer"
               className="hidden md:inline-block" // Masqué sur mobile, visible sur md et plus
             >
-              <FontAwesomeIcon icon={faLinkedin} size="lg" className={`w-8 h-8
+              <FontAwesomeIcon icon={faLinkedin} size="xl" className={`w-14 h-14
                 ${isScrolled
                     ? 'text-[#091369]' 
                     : 'text-[#f7f7f7] header-linkedin-link'
