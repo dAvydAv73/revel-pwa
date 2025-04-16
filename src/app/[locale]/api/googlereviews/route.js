@@ -6,9 +6,11 @@ export const revalidate = 86400; // Mise en cache pendant 24 heures
 export async function GET() {
   try {
     // Vérifier si les variables d'environnement sont définies
+    
     const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
     const PLACE_ID = process.env.GOOGLE_PLACE_ID;
-    
+   
+
     if (!GOOGLE_API_KEY) {
       console.error("La clé API Google n'est pas définie");
       return NextResponse.json(
@@ -29,7 +31,11 @@ export async function GET() {
     const apiUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,user_ratings_total,reviews&language=fr&key=${GOOGLE_API_KEY}`;
     
     // Récupérer les avis depuis l'API Google Places
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl, {
+        headers: {
+          'Referer': ''
+        }
+      });
     
     if (!response.ok) {
       throw new Error(`Erreur HTTP: ${response.status}`);
