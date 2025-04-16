@@ -61,7 +61,7 @@ export default function Reviews() {
     };
 
     fetchReviews();
-  }, []);
+  }, [locale]); 
 
   // Fonction pour avancer dans le carrousel
   const nextReview = () => {
