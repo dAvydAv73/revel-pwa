@@ -104,7 +104,7 @@ export default function Reviews() {
         <div className="reviews-info">
           <div className="rating-value">{reviewsData.rating.toFixed(1)}</div>
           <RatingStars rating={reviewsData.rating} />
-          <div className="reviews-count">Basée sur {reviewsData.reviews.length} avis</div>
+          <div className="reviews-count">Basée sur {reviewsData.total_reviews || reviewsData.reviews.length} avis</div>
           <div className="google-logo">
             <Image 
               src="/img/google-logo.svg" 
