@@ -2,6 +2,7 @@
 // pwa-revel/components/Reviews/Reviews.js
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useLocale } from "next-intl";
 
 // Composant pour les étoiles
 const RatingStars = ({ rating }) => {
@@ -27,6 +28,8 @@ const formatDate = (timestamp) => {
 };
 
 export default function Reviews() {
+  const locale = useLocale();
+
   const [reviewsData, setReviewsData] = useState({
     name: '',
     rating: 0,
@@ -43,7 +46,7 @@ export default function Reviews() {
     const fetchReviews = async () => {
       try {
         // Appel à l'API avec le préfixe de locale
-        const response = await fetch('/fr/api/googlereviews');
+        const response = await fetch(`/${locale}/api/googlereviews`);
         if (!response.ok) {
           throw new Error(`Erreur HTTP: ${response.status}`);
         }
