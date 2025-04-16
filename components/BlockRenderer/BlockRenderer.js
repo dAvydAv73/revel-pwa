@@ -407,7 +407,6 @@ export const BlockRenderer = ({ blocks }) => {
           );
         }
         case "acf/partners-block": {
-          console.log("Affichage du bloc Partenaires", block);
           return (
             <PartnerBlock 
               key={block.id || `partner-block-${index}`}
