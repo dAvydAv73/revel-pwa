@@ -1,4 +1,4 @@
-// root/app/api/googlereviews/route.js
+// app/[locale]/api/googlereviews/route.js
 import { NextResponse } from "next/server";
 
 export const revalidate = 86400; // Mise en cache pendant 24 heures
@@ -28,21 +28,14 @@ export async function GET() {
     // Construction de l'URL
     const apiUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,user_ratings_total,reviews&language=fr&key=${GOOGLE_API_KEY}`;
     
-    console.log("Appel à l'API Google avec l'URL (clé masquée):", 
-      apiUrl.replace(GOOGLE_API_KEY, "API_KEY_HIDDEN"));
-    
     // Récupérer les avis depuis l'API Google Places
     const response = await fetch(apiUrl);
-    
-    console.log("Statut de la réponse:", response.status);
     
     if (!response.ok) {
       throw new Error(`Erreur HTTP: ${response.status}`);
     }
     
     const data = await response.json();
-    
-    console.log("Statut de l'API Google:", data.status);
     
     if (data.status !== "OK") {
       throw new Error(`Erreur API Google: ${data.status} - ${data.error_message || "Pas de message d'erreur"}`);
