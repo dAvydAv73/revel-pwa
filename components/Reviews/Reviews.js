@@ -177,6 +177,16 @@ export default function Reviews() {
           </button>
         </div>
       </div>
+      <div className="reviews-footer">
+        <a 
+          href="https://search.google.com/local/reviews?placeid=ChIJm7mNWFKDi0cRVWzOlGW1Z1Y" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="view-all-reviews"
+        >
+          Voir tous nos avis sur Google
+        </a>
+      </div>
     </div>
   );
 }

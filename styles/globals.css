@@ -768,7 +768,25 @@ strong{
 .reviews-no-reviews {
   color: #666;
 }
+.reviews-footer {
+  text-align: center;
+  margin-top: 2rem;
+}
 
+.view-all-reviews {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #4285F4;  /* Bleu Google */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.view-all-reviews:hover {
+  background-color: #3367D6;  /* Bleu Google plus foncé */
+}
 /* Responsive */
 @media (max-width: 1024px) {
   .reviews-container {

@@ -1,10 +1,12 @@
 // root/app/[locale]/api/googlereviews/route.js
 import { NextResponse } from "next/server";
 
+export const revalidate = 86400; // en secondes
+
 export async function GET() {
   try {
-    const GOOGLE_API_KEY = "AIzaSyATpPNzFkf375Ihqm77CjRckIm-_HU5ui0";
-    const PLACE_ID = "ChIJm7mNWFKDi0cRVWzOlGW1Z1Y";
+    const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+    const PLACE_ID = process.env.GOOGLE_PLACE_ID;
     
     // Ajout du paramètre language=fr pour obtenir les avis en français
     const response = await fetch(
