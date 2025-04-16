@@ -1,6 +1,5 @@
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin('./src/i18n.js');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -16,6 +15,18 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: process.env.WP_IMAGES_URL,
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'maps.googleapis.com',
         port: '',
         pathname: '/**'
       }
@@ -44,18 +55,13 @@ const nextConfig = {
         },
       };
     }
-
     config.performance = {
       ...config.performance,
       maxAssetSize: 1000000,
     };
-
     config.experiments = { ...config.experiments, topLevelAwait: true };
-
     return config;
   },
 };
-
-
 // Appliquez withNextIntl à la configuration complète
 module.exports = withNextIntl(nextConfig);
