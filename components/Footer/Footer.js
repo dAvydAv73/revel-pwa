@@ -68,7 +68,10 @@ export const Footer = ({ items = [], footerData = null }) => {
                       <a href={`tel:${footerData.telephone}`} className="hover:text-[#FA1565] underline text-white">{footerData.telephone}</a>
                       </p>
                     )}
-                    {footerData.adresse && <p className="mb-2 text-white">{footerData.adresse}</p>}
+                    {footerData.adresse && (
+                      <div className="mb-2 text-white"
+                      dangerouslySetInnerHTML={{ __html: footerData.adresse }}/>
+                    )}
 
                     
                   </div>

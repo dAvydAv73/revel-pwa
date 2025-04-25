@@ -139,8 +139,11 @@ export const MegaMenu = ({
             )}
             
             {footerData.adresse && (
-              <p className="text-white text-center mb-3 opacity-60 text-xs">{footerData.adresse}</p>
-            )}
+              <div
+                  className="text-white text-center mb-3 opacity-60 text-xs"
+                  dangerouslySetInnerHTML={{ __html: footerData.adresse }}
+                />            
+              )}
           </div>
           
           {/* Labels Qualiopi et autres */}
