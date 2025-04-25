@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import LogoIconWhite from "../../public/img/revel5_switch.svg";
+import LogoIconWhite  from "../../public/img/logo-revel-white.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -28,7 +28,7 @@ export const Footer = ({ items = [], footerData = null }) => {
                     className="h-auto"
                     alt="Révèl | Coaching professionnel Bilan de compétences"
                   />
-                  <p className="text-[#FA1565] font-lemonmilk font-medium text-xs mt-2">
+                  <p className="text-[#FA1565] font-lemonmilk font-medium text-xs mt-2 hidden">
                     Coaching professionnel <br />Bilan de compétences
                   </p>
                 </a>

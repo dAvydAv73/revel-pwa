@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-import LogoIconWhite from "../../public/img/revel5_switch.svg";
+import LogoIconWhite  from "../../public/img/logo-revel-white.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCalendarDay, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -52,10 +52,10 @@ export const MegaMenu = ({
           <Image
             src={LogoIconWhite}
             width={logoWidth}
-            className="mb-2 ml-6"
+            className="mb-2 "
             alt="Révèl | Coaching professionnelle & Bilan de compétences"
           />
-          <p className="text-[#FA1565] font-lemonmilk font-medium text-xs text-center">
+          <p className="text-[#FA1565] font-lemonmilk font-medium text-xs text-center hidden">
             Coaching professionnelle &<br /> Bilan de compétences
           </p>
         </a>

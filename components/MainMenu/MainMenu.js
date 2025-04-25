@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ButtonLink } from "../ButtonLink";
 import Image from "next/image";
-import LogoIconBlue from "../../public/img/revel5.svg";
-import LogoIconWhite from "../../public/img/revel5_switch.svg";
+import LogoIconWhite  from "../../public/img/logo-revel-white.png";
+import LogoIconBlue from "../../public/img/logo-revel.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils, faBars, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -79,14 +78,12 @@ export const MainMenu = ({
             <a href="/" title="Révèl - Accueil" className="logo-nav-link items-center">
               <Image
                 priority
-                src={isScrolled ? LogoIconBlue: LogoIconWhite}
-                width={140}
-                className="h-auto -mt-5"
+                src={isScrolled ? LogoIconBlue : LogoIconWhite}
+                width={180}
+                className="h-auto"
                 alt="Révèl | Coaching professionnel Bilan de compétences"
               />
-              <p className={`font-lemonmilk font-medium text-xs mobile-text-xs mt-1 ${
-                  isScrolled ? 'text-[#091369]' : 'text-white'
-                }`}>
+              <p className="font-lemonmilk font-medium text-xs mobile-text-xs mt-1 hidden">
               Bilan de compétences<br />Coaching professionnel</p>
             </a>
           </div>
@@ -109,7 +106,7 @@ export const MainMenu = ({
                   className={`p-5 block transition-colors duration-300 font-lemonmilk font-medium text-sm px-2 py-1 drop-shadow-md 
                    ${isScrolled
                     ? 'text-[#091369]' 
-                    : 'text-[#f7f7f7] revel-text-shadow'
+                    : 'text-[#f7f7f7]'
                     }
                 `}
                 >
