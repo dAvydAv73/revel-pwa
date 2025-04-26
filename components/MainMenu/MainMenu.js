@@ -143,7 +143,7 @@ export const MainMenu = ({
             
             {/* Bouton rendez-vous */}
             <a
-              href="https://revel-pwa.vercel.app/fr/rendez-vous#booking"
+              href="https://www.revel-tes-talents.com/fr/rendez-vous#booking"
               className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] cursor-pointer  bg-[#FA1565]  text-white"              
             >
               Rendez-vous

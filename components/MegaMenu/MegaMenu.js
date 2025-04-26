@@ -98,7 +98,7 @@ export const MegaMenu = ({
       {/* Contact LinkedIn et Button */}
       <div className="flex flex-col items-center ">
         <a
-            href="https://revel-pwa.vercel.app/fr/rendez-vous#booking"
+            href="https://www.revel-tes-talents.com/fr/rendez-vous#booking"
             className="px-4 py-3 flex items-center transition-colors font-lemonmilk text-xs cursor-pointer bg-[#FA1565] text-white mb-4"
             onClick={() => toggleMenu()}
             >
