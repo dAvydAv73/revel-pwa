@@ -11,12 +11,11 @@ const PartnerBlock = ({ block }) => {
   const extractPartners = (data) => {
     const partners = [];
     let index = 1;
-    
-    // Boucle tant que nous trouvons des données de partenaires
+  
     while (data[`partners_${index}_image`] || data[`partners_${index}_nom`]) {
-      // D'après votre capture DOM, il semble que le lien soit stocké directement
-      const linkUrl = data[`partners_${index}_lien`] || '';
-      
+      const rawLink = data[`partners_${index}_lien`];
+      const linkUrl = typeof rawLink === 'object' && rawLink !== null ? rawLink.url : rawLink || '';
+  
       partners.push({
         image: data[`partners_${index}_image`] || null,
         nom: data[`partners_${index}_nom`] || '',
@@ -24,7 +23,7 @@ const PartnerBlock = ({ block }) => {
       });
       index++;
     }
-    
+  
     return partners;
   };
   
