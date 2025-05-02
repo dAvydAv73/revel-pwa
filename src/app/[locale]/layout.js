@@ -9,6 +9,10 @@ import { MainMenu } from "../../../components/MainMenu";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Footer } from '../../../components/Footer';
+import { ScrollToAnchor } from '../../../components/ScrollToAnchor';
+import { ClientWrapper } from '../../../components/ClientWrapper';
+
+
 config.autoAddCss = false;
 
 // Configuration pour les polices Google Fonts
@@ -94,9 +98,13 @@ export default async function RootLayout({ children, params }) {
             items={menuData.mainMenuItems}
             footerData={footerSettings} // Passage des données du footer au MainMenu avec valeur sécurisée
           />
-          <div className="content" id="content">
-            {children}
-          </div>
+          <ScrollToAnchor />
+
+          <ClientWrapper>
+            <div className="content" id="content">
+              {children}
+            </div>
+          </ClientWrapper>
           <Footer items={menuData.mainMenuItems} footerData={footerSettings} />
         </NextIntlClientProvider>
       </body>

@@ -7,10 +7,9 @@ const PartnerBlock = ({ block }) => {
   const titre = data.titre || 'Nos Partenaires';
   const sous_titre = data.sous_titre || '';
   
-  // Extraire les partenaires de la structure de données
   const extractPartners = (data) => {
     const partners = [];
-    let index = 1;
+    let index = 0;
   
     while (data[`partners_${index}_image`] || data[`partners_${index}_nom`]) {
       const rawLink = data[`partners_${index}_lien`];
@@ -40,7 +39,7 @@ const PartnerBlock = ({ block }) => {
       {partners && partners.length > 0 ? (
         <div className="flex flex-wrap justify-center">
           {partners.map((partner, index) => (
-            <div key={`partner-${index}`} className="w-1/2 sm:w-1/3 lg:w-1/6 p-2 flex items-center justify-center">
+            <div key={`partner-${index}`} className="w-1/2 sm:w-1/3 lg:w-1/5 p-2 flex items-center justify-center">
               <div className="w-full h-20 flex items-center justify-center">
                 {partner.lien ? (
                   <a 

@@ -216,31 +216,27 @@ export const BlockRenderer = ({ blocks }) => {
           const imageClasses = block.attributes?.className || '';
           const imageUrl = block.attributes?.url || "";
           const isSvg = imageUrl.toLowerCase().endsWith('.svg');
-          
+          const imageLink = block.attributes?.href || null;
+        
           // Détermine les dimensions à utiliser
           let imgWidth = block.attributes?.width;
           let imgHeight = block.attributes?.height;
-          
-          // Pour les SVG, on privilégie des valeurs qui préservent les proportions
+        
           if (isSvg) {
             if (!imgWidth && !imgHeight) {
-              // Si aucune dimension n'est fournie, utiliser des valeurs qui permettront au SVG de s'adapter
               imgWidth = 200;
               imgHeight = 200;
             } else if (!imgHeight) {
-              // Si seule la largeur est fournie, définir la hauteur à "auto"
               imgHeight = imgWidth;
             } else if (!imgWidth) {
-              // Si seule la hauteur est fournie, définir la largeur à "auto"
               imgWidth = imgHeight;
             }
           } else {
-            // Valeurs par défaut pour les images non-SVG
             imgWidth = imgWidth || 300;
             imgHeight = imgHeight || 300;
           }
-          
-          return (
+        
+          const imageElement = (
             <Image
               key={block.id || `image-${index}`}
               src={imageUrl}
@@ -251,7 +247,19 @@ export const BlockRenderer = ({ blocks }) => {
               style={isSvg ? { maxWidth: '100%', objectFit: 'contain' } : {}}
             />
           );
+        
+          return imageLink ? (
+            <a
+              key={`image-link-${index}`}
+              href={imageLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {imageElement}
+            </a>
+          ) : imageElement;
         }
+        
         case "core/list": {
           return (
             <div key={block.id || `list-${index}`} className="space-y-2">
@@ -362,7 +370,6 @@ export const BlockRenderer = ({ blocks }) => {
           );
         }
         case "acf/booking-iframe": {
-          console.log("Rendu du bloc de réservation à l'index", index, block);
           
           const data = block.attributes?.data || {};
           
@@ -373,13 +380,7 @@ export const BlockRenderer = ({ blocks }) => {
           const customId = data.blockcustomid || '';
           const customClass = data.custom_class || '';
           
-          console.log("Paramètres de l'iframe:", { 
-            iframeUrl, 
-            heightValue, 
-            allowScrolling, 
-            customId,
-            customClass 
-          });
+          
           
           // Ne pas afficher l'iframe si aucune URL n'est définie
           if (!iframeUrl) {
@@ -407,7 +408,10 @@ export const BlockRenderer = ({ blocks }) => {
           );
         }
         case "acf/partners-block": {
+          //console.log(block.attributes)
+
           return (
+            
             <PartnerBlock 
               key={block.id || `partner-block-${index}`}
               block={block}
