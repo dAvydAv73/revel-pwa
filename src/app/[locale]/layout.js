@@ -1,3 +1,4 @@
+//pwa-revel/src/app/[locale]/layout.js
 import {NextIntlClientProvider} from 'next-intl';
 import {unstable_setRequestLocale, getMessages} from 'next-intl/server';
 import { Nunito } from "next/font/google";
@@ -11,6 +12,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Footer } from '../../../components/Footer';
 import { ScrollToAnchor } from '../../../components/ScrollToAnchor';
 import { ClientWrapper } from '../../../components/ClientWrapper';
+import Script from 'next/script';
+
 
 
 config.autoAddCss = false;
@@ -87,7 +90,22 @@ export default async function RootLayout({ children, params }) {
   
   return (
     <html lang={locale} className={`${nunito.variable} ${lemonMilk.variable}`}>
+    
       <body>
+
+       {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TM4BCQG433"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TM4BCQG433');
+          `}
+        </Script>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <MainMenu
             callToActionDestination={menuData.callToActionDestination}
