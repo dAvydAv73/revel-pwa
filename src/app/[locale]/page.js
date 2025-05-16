@@ -1,3 +1,4 @@
+//pwa-revel/src/app/[locale]/page.js
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { BlockRenderer } from "../../../components/BlockRenderer";
 import { getPage } from "../../../utils/getPage";
@@ -53,7 +54,7 @@ export async function generateMetadata({ params: { locale } }) {
     }));
 
     return {
-      title: seo?.title || "Philippe Chevrier | Site Officiel",
+      title: seo?.title || "Revel Tes Talents | Coaching Professionnel",
       description: seo?.metaDesc || "",
       alternates: {
         canonical: `${baseUrl}/${locale}`, // Ajouter la locale ici aussi
@@ -63,10 +64,10 @@ export async function generateMetadata({ params: { locale } }) {
         }
       },
       openGraph: {
-        title: seo?.opengraphTitle || seo?.title || "Philippe Chevrier | Site Officiel",
+        title: seo?.opengraphTitle || seo?.title || "Revel Tes Talents | Coaching Professionnel",
         description: seo?.opengraphDescription || seo?.metaDesc || "",
         url: `${baseUrl}/${locale}`, // Inclure la locale dans l'URL Open Graph
-        siteName: 'Philippe Chevrier',
+        siteName: 'Revel Tes Talents',
         images: seo?.opengraphImage?.sourceUrl ? [{ url: seo.opengraphImage.sourceUrl }] : [],
         locale: locale,
         type: 'website',
@@ -96,7 +97,7 @@ export async function generateMetadata({ params: { locale } }) {
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
-      title: "Philippe Chevrier | Site Officiel",
+      title: "Revel Tes Talents | Coaching Professionnel",
       description: "",
     };
   }
