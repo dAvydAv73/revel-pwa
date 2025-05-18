@@ -62,29 +62,6 @@ const nextConfig = {
     config.experiments = { ...config.experiments, topLevelAwait: true };
     return config;
   },
-   async redirects() {
-    return [
-      // Forcer HTTPS et www
-      {
-        source: '/:path*',
-        has: [
-          { type: 'host', value: 'revel-tes-talents.com' } // sans www
-        ],
-        permanent: true,
-        destination: 'https://www.revel-tes-talents.com/:path*',
-      },
-      // Forcer HTTPS si jamais www n'est pas géré ailleurs (sécurité)
-      {
-        source: '/:path*',
-        has: [
-          { type: 'host', value: 'www.revel-tes-talents.com' },
-          { type: 'protocol', value: 'http' },
-        ],
-        permanent: true,
-        destination: 'https://www.revel-tes-talents.com/:path*',
-      },
-    ];
-  },
 };
 // Appliquez withNextIntl à la configuration complète
 module.exports = withNextIntl(nextConfig);
