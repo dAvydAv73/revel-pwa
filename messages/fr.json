@@ -10,6 +10,8 @@
       }
     },
     "NotFoundPage":{
-      "title": "Page 404"
+      "title": "Page introuvable",
+      "description": "Désolé, cette page n'existe pas ou a été déplacée.",
+      "cta": "Retour à l’accueil"
     }
   }
