@@ -25,7 +25,7 @@ export async function GET() {
         <lastmod>${new Date().toISOString()}</lastmod>
       </url>
     `);
-  }
+  } 
 
   // 3. Ajouter toutes les autres pages sauf "home" et "accueil"
   pages
