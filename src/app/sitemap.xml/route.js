@@ -1,3 +1,4 @@
+//pwa-revel/src/app/sitemap.xml/route.js
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.revel-tes-talents.com';
 
@@ -5,18 +6,12 @@ export async function GET() {
   const response = await fetch('https://headless-revel.davydav.com/wp-json/wp/v2/pages?per_page=100');
   const pages = await response.json();
 
-  const urls = pages.map(page => `
+  const urls = pages
+  .filter(page => page.slug !== 'accueil') // <- important
+  .map(page => `
     <url>
       <loc>${baseUrl}/fr${page.slug === 'home' ? '' : '/' + page.slug}</loc>
       <lastmod>${new Date(page.modified_gmt).toISOString()}</lastmod>
-      <!-- 
-        Multilingual management:
-        If more languages are added in the future, include <xhtml:link hreflang="..." /> tags here.
-        Example:
-        <xhtml:link rel="alternate" hreflang="fr" href="${baseUrl}/fr/${page.slug}" />
-        <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/${page.slug}" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/fr/${page.slug}" />
-      -->
     </url>
   `);
 

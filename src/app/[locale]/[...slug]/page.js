@@ -3,11 +3,16 @@ import { BlockRenderer } from "../../../../components/BlockRenderer";
 import { getPage } from "../../../../utils/getPage";
 import { getSeo } from "../../../../utils/getSeo";
 import { notFound } from "next/navigation";
+import { redirect } from 'next/navigation'; // à ajouter
 
 export default async function Page({ params }) {
   const slugPath = params.slug ? params.slug.join("/") : "";
   const data = await getPage(slugPath);
 
+  // 🔁 Redirection de /fr/accueil vers /fr/
+  if (slugPath === "accueil") {
+    redirect(`/${params.locale}`);
+  }
   if (!data) {
     notFound();
   }
@@ -33,14 +38,14 @@ export async function generateMetadata({ params }) {
       title: seo?.title || "Revel Tes Talents | Coaching Professionnel",
       description: seo?.metaDesc || "",
       alternates: {
-        canonical: `${baseUrl}/${locale}${pageSlug}`,
-        languages: {
-          'x-default': baseUrl,
-          ...Object.fromEntries(
-            alternateLanguages.map(({ hrefLang, href }) => [hrefLang, href])
-          ),
+          canonical: `${baseUrl}/${locale}${pageSlug === '/accueil' ? '' : pageSlug}`,
+          languages: {
+            'x-default': baseUrl,
+            ...Object.fromEntries(
+              alternateLanguages.map(({ hrefLang, href }) => [hrefLang, href])
+            ),
+          },
         },
-      },
       openGraph: {
         title: seo?.opengraphTitle || seo?.title || "Revel Tes Talents | Coaching Professionnel",
         description: seo?.opengraphDescription || seo?.metaDesc || "",
