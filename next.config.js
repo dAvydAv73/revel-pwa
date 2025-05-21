@@ -1,5 +1,6 @@
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin('./src/i18n.js');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -63,5 +64,9 @@ const nextConfig = {
     return config;
   },
 };
-// Appliquez withNextIntl à la configuration complète
-module.exports = withNextIntl(nextConfig);
+
+// Appliquez withNextIntl à la configuration complète avec localePrefix as-needed
+module.exports = withNextIntl(nextConfig, {
+  // 👇 Permet de ne pas préfixer la locale par défaut (/fr)
+  localePrefix: 'as-needed'
+});

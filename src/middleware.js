@@ -1,13 +1,26 @@
+// src/middleware.js
 import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale, localePrefix } from '../src/i18n';
+import { NextResponse } from 'next/server';
 
-export default createMiddleware({
-    locales,
-    defaultLocale,
-    localePrefix,
+const intlMiddleware = createMiddleware({
+  locales: ['fr'],
+  defaultLocale: 'fr',
+  localePrefix: 'never',
 });
 
+export function middleware(request) {
+  const { pathname } = request.nextUrl;
+
+  // 🔁 Redirection manuelle de /accueil → /
+  if (pathname === '/accueil') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
+    return NextResponse.redirect(url);
+  }
+
+  return intlMiddleware(request);
+}
+
 export const config = {
-    // Matcher ignoring `/_next/` and `/api/`
-    matcher: ['/((?!api|_next|.*\\..*).*)']
+  matcher: ['/((?!api|_next|.*\\..*).*)'],
 };

@@ -1,18 +1,18 @@
-//pwa-revel/src/app/[locale]/page.js
-import { BlockRenderer } from "../../../../components/BlockRenderer";
-import { getPage } from "../../../../utils/getPage";
-import { getSeo } from "../../../../utils/getSeo";
-import { notFound } from "next/navigation";
-import { redirect } from 'next/navigation'; // à ajouter
+//pwa-revel/src/app/[...slug]/page.js
+import { BlockRenderer } from "../../../components/BlockRenderer";
+import { getPage } from "../../../utils/getPage";
+import { getSeo } from "../../../utils/getSeo";
+import { notFound, redirect } from "next/navigation";
 
 export default async function Page({ params }) {
   const slugPath = params.slug ? params.slug.join("/") : "";
-  const data = await getPage(slugPath);
 
-  // 🔁 Redirection de /fr/accueil vers /fr/
   if (slugPath === "accueil") {
-    redirect(`/${params.locale}`);
+    redirect(`/`);
   }
+
+  const data = await getPage(`/${slugPath}`);
+
   if (!data) {
     notFound();
   }
@@ -21,49 +21,36 @@ export default async function Page({ params }) {
 }
 
 export async function generateMetadata({ params }) {
-  const slugPath = params.slug ? params.slug.join("/") : "";
+  const slugPath = params.slug ? `/${params.slug.join("/")}` : '/';
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';
-  const locale = params.locale || 'fr';
-  const pageSlug = slugPath ? `/${slugPath}` : '/';
 
   try {
     const seo = await getSeo(slugPath);
-
-    const alternateLanguages = ['fr', 'en'].map(lang => ({
-      hrefLang: lang,
-      href: `${baseUrl}/${lang}${pageSlug}`,
-    }));
 
     return {
       title: seo?.title || "Revel Tes Talents | Coaching Professionnel",
       description: seo?.metaDesc || "",
       alternates: {
-          canonical: `${baseUrl}/${locale}${pageSlug === '/accueil' ? '' : pageSlug}`,
-          languages: {
-            'x-default': baseUrl,
-            ...Object.fromEntries(
-              alternateLanguages.map(({ hrefLang, href }) => [hrefLang, href])
-            ),
-          },
-        },
+        canonical: `${baseUrl}${slugPath === '/accueil' ? '/' : slugPath}`,
+        languages: {
+          'fr': `${baseUrl}${slugPath}`,
+          'x-default': `${baseUrl}${slugPath}`
+        }
+      },
       openGraph: {
         title: seo?.opengraphTitle || seo?.title || "Revel Tes Talents | Coaching Professionnel",
         description: seo?.opengraphDescription || seo?.metaDesc || "",
-        url: `${baseUrl}/${locale}${pageSlug}`,
+        url: `${baseUrl}${slugPath}`,
         siteName: "Revel Tes Talents",
-        images: seo?.opengraphImage?.sourceUrl
-          ? [{ url: seo.opengraphImage.sourceUrl }]
-          : [],
-        locale: locale,
+        images: seo?.opengraphImage?.sourceUrl ? [{ url: seo.opengraphImage.sourceUrl }] : [],
+        locale: 'fr',
         type: "website",
       },
       twitter: {
         card: "summary_large_image",
         title: seo?.opengraphTitle || seo?.title || "Revel Tes Talents | Coaching Professionnel",
         description: seo?.opengraphDescription || seo?.metaDesc || "",
-        images: seo?.opengraphImage?.sourceUrl
-          ? [seo.opengraphImage.sourceUrl]
-          : [],
+        images: seo?.opengraphImage?.sourceUrl ? [seo.opengraphImage.sourceUrl] : [],
       },
       robots: {
         index: true,

@@ -1,25 +1,26 @@
+// /pwa-revel/utils/getPage.js
 import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
 
 export async function getPage(uri) {
-  //console.log('========== getPage Start ==========');
-  //console.log('getPage called with uri:', uri);
-
   if (typeof uri !== 'string') {
-    //console.error('Invalid uri provided:', uri);
     throw new Error('Invalid uri');
   }
 
-  const locale = uri === '/home' ? 'en' : 'fr';
-  const language = locale.toUpperCase();
-  //console.log('Locale:', locale, 'Language:', language);
+  // 🔁 Corrige les URIs problématiques pour les adapter à WordPress
+  let realUri = uri;
+  if (uri === '/' || uri === '' || uri === '/accueil') {
+    realUri = '/accueil'; // ← adapte ici si WordPress utilise /home à la place
+  }
+  const cleanedUri = uri.replace(/^\/fr(\/|$)/, '/');
+  const language = 'FR'; // Langue figée car FR unique sur ce site
 
   const params = {
     query: `
-    query PageQuery($uri: String!,$language: LanguageCodeEnum!) {
-      nodeByUri(uri: $uri) {
-        ... on Page {
-          blocks(postTemplate: false)
-          translation(language: $language) {
+      query PageQuery($uri: String!,$language: LanguageCodeEnum!) {
+        nodeByUri(uri: $uri) {
+          ... on Page {
+            blocks(postTemplate: false)
+            translation(language: $language) {
               id
               title
               slug
@@ -27,23 +28,22 @@ export async function getPage(uri) {
                 code
                 slug
               }
+            }
           }
         }
       }
-    }
-  `,
+    `,
     variables: {
-      uri,
+      uri: cleanedUri,
       language
     },
   };
+      console.log('🔍 [getPage] URI demandé :', uri);
 
-  //console.log('GraphQL query params:', JSON.stringify(params, null, 2));
 
   try {
     const wpGraphqlUrl = process.env.WP_GRAPHQL_URL;
-    //console.log('Fetching from:', wpGraphqlUrl);
-    
+
     if (!wpGraphqlUrl) {
       throw new Error('WP_GRAPHQL_URL is not defined');
     }
@@ -56,11 +56,7 @@ export async function getPage(uri) {
       body: JSON.stringify(params),
     });
 
-    //console.log('Response status:', response.status);
-
     const responseData = await response.json();
-    //console.log('Raw response data:', JSON.stringify(responseData, null, 2));
-
     const { data, errors } = responseData;
 
     if (errors) {
@@ -68,26 +64,14 @@ export async function getPage(uri) {
       throw new Error('GraphQL query returned errors');
     }
 
-    if (!data || !data.nodeByUri) {
-      console.log('No data or nodeByUri found');
+    if (!data || !data.nodeByUri || !data.nodeByUri.blocks) {
+      console.warn('No valid data or blocks found for URI:', realUri);
       return null;
     }
 
-    //console.log('nodeByUri data:', JSON.stringify(data.nodeByUri, null, 2));
-
-    if (!data.nodeByUri.blocks) {
-      //console.error('No blocks found in nodeByUri');
-      return null;
-    }
-
-    const blocks = cleanAndTransformBlocks(data.nodeByUri.blocks);
-    //console.log('Transformed blocks:', JSON.stringify(blocks, null, 2));
-
-    //console.log('========== getPage End ==========');
-    return blocks;
+    return cleanAndTransformBlocks(data.nodeByUri.blocks);
   } catch (error) {
     console.error('Error in getPage:', error);
-    console.log('========== getPage Error End ==========');
     throw error;
   }
 }
