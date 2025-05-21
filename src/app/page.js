@@ -1,8 +1,8 @@
 //pwa-revel/src/app/page.js
-import { BlockRenderer } from "../components/BlockRenderer";
-import { getPage } from "../utils/getPage";
+import { BlockRenderer } from "../../components/BlockRenderer";
 import { notFound } from "next/navigation";
-import { getSeo } from "../utils/getSeo";
+import { getPage } from "../../utils/getPage";
+import { getSeo } from "../../utils/getSeo";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -12,7 +12,7 @@ export default async function Home() {
   const data = await getPage(slug);
 
   console.log('getPage / →', data);
-  
+
   if (!data || !Array.isArray(data)) {
     console.warn('[HOME] Page not found for slug "/"');
     notFound();
