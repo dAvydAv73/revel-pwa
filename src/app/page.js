@@ -4,14 +4,12 @@ import { notFound } from "next/navigation";
 import { getPage } from "../../utils/getPage";
 import { getSeo } from "../../utils/getSeo";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function Home() {
-  const slug = '/'; // Home = racine
+  const slug = "/"; // home = racine
   const data = await getPage(slug);
-
-  console.log('getPage / →', data);
 
   if (!data || !Array.isArray(data)) {
     console.warn('[HOME] Page not found for slug "/"');
@@ -22,9 +20,8 @@ export default async function Home() {
 }
 
 export async function generateMetadata() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';
-  const slug = '/';
-
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
+  const slug = "/"; // home
 
   try {
     const seo = await getSeo(slug);
@@ -35,36 +32,40 @@ export async function generateMetadata() {
       alternates: {
         canonical: `${baseUrl}/`,
         languages: {
-          'fr': `${baseUrl}/`,
-          'x-default': `${baseUrl}/`,
-        }
+          fr: `${baseUrl}/`,
+          "x-default": `${baseUrl}/`,
+        },
       },
       openGraph: {
         title: seo?.opengraphTitle || seo?.title,
         description: seo?.opengraphDescription || seo?.metaDesc,
         url: `${baseUrl}/`,
-        siteName: 'Revel Tes Talents',
-        images: seo?.opengraphImage?.sourceUrl ? [{ url: seo.opengraphImage.sourceUrl }] : [],
-        locale: 'fr',
-        type: 'website',
+        siteName: "Revel Tes Talents",
+        images: seo?.opengraphImage?.sourceUrl
+          ? [{ url: seo.opengraphImage.sourceUrl }]
+          : [],
+        locale: "fr",
+        type: "website",
       },
       twitter: {
-        card: 'summary_large_image',
+        card: "summary_large_image",
         title: seo?.opengraphTitle || seo?.title,
         description: seo?.opengraphDescription || seo?.metaDesc,
-        images: seo?.opengraphImage?.sourceUrl ? [seo.opengraphImage.sourceUrl] : [],
+        images: seo?.opengraphImage?.sourceUrl
+          ? [seo.opengraphImage.sourceUrl]
+          : [],
       },
       robots: {
         index: true,
         follow: true,
       },
       additionalMetaTags: [
-        { name: 'googlebot', content: 'index, follow' },
-        { name: 'robots', content: 'noarchive' },
-      ]
+        { name: "googlebot", content: "index, follow" },
+        { name: "robots", content: "noarchive" },
+      ],
     };
   } catch (error) {
-    console.error('Error generating metadata:', error);
+    console.error("Error generating metadata:", error);
     return {
       title: "Revel Tes Talents | Coaching Professionnel",
       description: "",

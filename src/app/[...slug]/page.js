@@ -5,13 +5,14 @@ import { getSeo } from "../../../utils/getSeo";
 import { notFound, redirect } from "next/navigation";
 
 export default async function Page({ params }) {
-  const slugPath = params.slug ? params.slug.join("/") : "";
+  const rawSlug = params?.slug?.join("/") || "";
 
-  if (slugPath === "accueil") {
-    redirect(`/`);
+  if (rawSlug === "accueil") {
+    redirect("/");
   }
 
-  const data = await getPage(`/${slugPath}`);
+  const slugPath = `/${rawSlug}`;
+  const data = await getPage(slugPath);
 
   if (!data) {
     notFound();
@@ -21,8 +22,9 @@ export default async function Page({ params }) {
 }
 
 export async function generateMetadata({ params }) {
-  const slugPath = params.slug ? `/${params.slug.join("/")}` : '/';
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';
+  const rawSlug = params?.slug?.join("/") || "";
+  const slugPath = rawSlug === "accueil" || rawSlug === "fr" ? "/" : `/${rawSlug}`;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
 
   try {
     const seo = await getSeo(slugPath);
@@ -31,26 +33,30 @@ export async function generateMetadata({ params }) {
       title: seo?.title || "Revel Tes Talents | Coaching Professionnel",
       description: seo?.metaDesc || "",
       alternates: {
-        canonical: `${baseUrl}${slugPath === '/accueil' ? '/' : slugPath}`,
+        canonical: `${baseUrl}${slugPath}`,
         languages: {
-          'fr': `${baseUrl}${slugPath}`,
-          'x-default': `${baseUrl}${slugPath}`
-        }
+          fr: `${baseUrl}${slugPath}`,
+          "x-default": `${baseUrl}${slugPath}`,
+        },
       },
       openGraph: {
-        title: seo?.opengraphTitle || seo?.title || "Revel Tes Talents | Coaching Professionnel",
-        description: seo?.opengraphDescription || seo?.metaDesc || "",
+        title: seo?.opengraphTitle || seo?.title,
+        description: seo?.opengraphDescription || seo?.metaDesc,
         url: `${baseUrl}${slugPath}`,
         siteName: "Revel Tes Talents",
-        images: seo?.opengraphImage?.sourceUrl ? [{ url: seo.opengraphImage.sourceUrl }] : [],
-        locale: 'fr',
+        images: seo?.opengraphImage?.sourceUrl
+          ? [{ url: seo.opengraphImage.sourceUrl }]
+          : [],
+        locale: "fr",
         type: "website",
       },
       twitter: {
         card: "summary_large_image",
-        title: seo?.opengraphTitle || seo?.title || "Revel Tes Talents | Coaching Professionnel",
-        description: seo?.opengraphDescription || seo?.metaDesc || "",
-        images: seo?.opengraphImage?.sourceUrl ? [seo.opengraphImage.sourceUrl] : [],
+        title: seo?.opengraphTitle || seo?.title,
+        description: seo?.opengraphDescription || seo?.metaDesc,
+        images: seo?.opengraphImage?.sourceUrl
+          ? [seo.opengraphImage.sourceUrl]
+          : [],
       },
       robots: {
         index: true,
