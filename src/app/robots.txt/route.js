@@ -5,8 +5,10 @@ export async function GET() {
 User-agent: *
 Allow: /
 
-# Sitemap principal pour toutes les locales (actuellement seulement /fr)
 Sitemap: ${baseUrl}/sitemap.xml
+
+Disallow: /_next/static/
+
 `;
 
   return new Response(content.trim(), {
