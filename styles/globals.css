@@ -473,7 +473,7 @@ img.label-item {
   justify-content: center;
   min-height: 400px;
   max-height: 900px;
-  height: 80vh;
+  height: 90vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -517,7 +517,7 @@ img.label-item {
   .homeCover {
     background: var(--bg-mobile);
     background-position: top center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
   }
 
