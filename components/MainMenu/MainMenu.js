@@ -133,7 +133,7 @@ export const MainMenu = ({
               rel="noopener noreferrer"
               className="hidden md:inline-block" // Masqué sur mobile, visible sur md et plus
             >
-              <FontAwesomeIcon icon={faLinkedin} size="xl" className={`w-14 h-14
+              <FontAwesomeIcon icon={faLinkedin} size="xl" className={`w-8 h-8
                 ${isScrolled
                     ? 'text-[#091369]' 
                     : 'text-[#f7f7f7] header-linkedin-link'
@@ -143,7 +143,7 @@ export const MainMenu = ({
             
             {/* Bouton rendez-vous */}
             <a
-              href="https://www.revel-tes-talents.com/fr/rendez-vous#booking"
+              href="https://www.revel-tes-talents.com/rendez-vous#booking"
               className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] cursor-pointer  bg-[#FA1565]  text-white"              
             >
               Rendez-vous

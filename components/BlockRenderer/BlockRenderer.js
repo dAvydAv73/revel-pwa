@@ -127,6 +127,7 @@ export const BlockRenderer = ({ blocks }) => {
             <Cover 
               key={block.id || `cover-${index}`} 
               background={block.attributes?.url || ""}
+              backgroundMobile={block.attributes?.mobileImageUrl || ""}
               customClasses={customClasses}
             >
               {block.innerBlocks && Array.isArray(block.innerBlocks) && block.innerBlocks.length > 0 ? (

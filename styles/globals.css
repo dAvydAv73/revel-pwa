@@ -1,18 +1,43 @@
-/* NextJS TailwindCSS 2.0 configuration
-NextJs/styles/globals.css
+
+/*
+============================================================================
+GLOBALS.CSS - STRUCTURE ORGANISÉE
+============================================================================
+
+SOMMAIRE
+----------------------------------------------------------------------------
+1. Tailwind Imports & Base Reset
+2. Fonts & Typography
+3. Buttons (Custom Tailwind Components)
+4. Keyframe Animations
+5. Hero Section
+6. Inside Sections (Text & Images)- Card items
+7. Reviews Section (Google & Carousel)
+8. Cover Section (HomeCover)
+9. Navbar & Logo
+10. Utility Classes & Miscellaneous
+11. Media Queries (Tablet & Mobile)
+============================================================================
 */
 
+/* =========================================================================
+   1. Tailwind Imports & Base Reset
+========================================================================= */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/*  CSS avec scroll-margin-top */
+
 html {
-  scroll-behavior: smooth; /* Pour un défilement fluide */
+  scroll-behavior: smooth;
 }
 
 [id] {
-  scroll-margin-top: 140px; /* Ajustez cette valeur à la hauteur de votre navbar */
+  scroll-margin-top: 140px;
 }
+
+/* =========================================================================
+   2. Fonts & Typography
+========================================================================= */
 .font-lato {
   font-family: var(--font-lato), sans-serif;
 }
@@ -20,18 +45,89 @@ html {
 .font-libre-bodoni {
   font-family: var(--font-libre-bodoni), serif;
 }
-.job-link {
-  text-decoration: underline;
-  position: relative;
-  padding-right: 1.5em; /* Espace pour l'icône */
-  margin-top: -1em;
-  
+
+p, li {
+  @apply font-nunito;
 }
-/* heroAnim */
+
+h4 {
+  font-family: var(--font-lemon-milk);
+  font-size: 1.7em;
+  font-weight: 500;
+}
+
+h5 {
+  font-family: var(--font-nunito);
+  font-size: 1.4em !important;
+  font-weight: 500 !important;
+}
+
+strong {
+  font-weight: 700 !important;
+}
+
+.column p {
+  text-align: justify;
+}
+
+.content p,
+li {
+  color: #212121;
+}
+
+.content h2 {
+  font-family: var(--font-lemon-milk);
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.content h3 {
+  font-family: var(--font-nunito);
+  font-size: 1.6em;
+}
+
+/* =========================================================================
+   3. Buttons (Custom Tailwind Components)
+========================================================================= */
+@layer components {
+  .btn {
+    @apply font-lemonmilk font-medium hover:bg-[#091369] bg-[#FA1565] hover:text-[#FFF7F7] text-[#FFF7F7] whitespace-nowrap inline-flex my-2 py-3 cursor-pointer text-sm transition-all text-left min-w-[260px] px-4 border border-transparent;
+  }
+
+  .btninvert {
+    @apply font-lemonmilk font-medium hover:bg-[#FA1565] bg-[#091369] text-[#FFF7F7] hover:text-[#FFF7F7] whitespace-nowrap inline-flex my-2 px-20 py-3 cursor-pointer text-sm transition-all text-left min-w-[260px] px-4 border border-transparent;
+  }
+}
+
+/* =========================================================================
+   4. Keyframe Animations
+========================================================================= */
+@keyframes slideInFromBottom {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideOutToTop {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-20px); opacity: 0; }
+}
+
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+/* =========================================================================
+   5. Hero Section
+========================================================================= */
 .hero-anim-container {
   overflow: hidden;
   margin-bottom: 0.4em;
-  margin-top:12em;
+  margin-top: 12em;
 }
 
 .hero-anim-dynamic-text {
@@ -46,426 +142,24 @@ html {
 .hero-anim-dynamic-text.text-exit {
   animation: slideOutToTop 0.5s forwards;
 }
-.py-4 img{
-  margin-bottom: 1em;
+
+.hero-cta-container,
+.hero-cta-container .py-4 {
+  padding-top: 0;
+  padding-bottom: 0;
 }
+
+/* =========================================================================
+   6. Inside Sections (Text & Images) - Card items
+========================================================================= */
 img.label-item {
   height: auto;
   width: 180px !important;
   object-fit: contain;
   max-height: 120px; /* Ajustez selon vos besoins */
 }
-/* components/Reviews/Reviews.module.css */
-.reviewsContainer {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.googleHeader {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.googleLogo {
-  height: 24px;
-  margin-right: 10px;
-}
-
-.reviewsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.reviewCard {
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  background-color: #fafafa;
-}
-
-.userInfo {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.userAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.rating {
-  margin-bottom: 10px;
-}
-
-.starFilled {
-  color: #FBBC05; /* Couleur jaune Google */
-  font-size: 20px;
-}
-
-.starEmpty {
-  color: #e0e0e0;
-  font-size: 20px;
-}
-
-.reviewText {
-  margin-bottom: 10px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.reviewDate {
-  color: #757575;
-  font-size: 12px;
-}
-
-.footer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.googleLink {
-  color: #4285F4; /* Couleur bleue Google */
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.googleLink:hover {
-  text-decoration: underline;
-}
-
-.logo-nav-link{
-  padding-top:0.8em
-}
-.logo-nav-link{
-  /*filter: drop-shadow(1px 1px 1px rgba(247, 247, 247, .3));*/
-}
-.header-linkedin-link{
-  /*filter: drop-shadow(1px 1px 1px rgba(9,19,105, .6));*/
-
-}
-
-@keyframes slideInFromBottom {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOutToTop {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-}
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slideDown {
-  animation: slideDown 0.4s ease-out forwards;
-}
-
-@layer components {
-  .btn {
-    @apply font-lemonmilk font-medium hover:bg-[#091369] bg-[#FA1565]  hover:text-[#FFF7F7] text-[#FFF7F7] whitespace-nowrap inline-flex my-2 py-3 cursor-pointer text-sm transition-all text-left min-w-[260px] px-4 border border-transparent;
-  }
-  .btninvert{
-    @apply font-lemonmilk font-medium hover:bg-[#FA1565] bg-[#091369]  text-[#FFF7F7] hover:text-[#FFF7F7] whitespace-nowrap inline-flex my-2 px-20 py-3  cursor-pointer text-sm transition-all text-left min-w-[260px] px-4 border border-transparent; 
-
-  }
-  
-}
-ul{
-
-}
-li{
-  
-
-}
-.revel-text-shadow{
-  text-shadow: 1px 1px 1px rgba(9,19,105, 0.6);
-}
-.hero-cta-container,
-.hero-cta-container .py-4{
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.column p{
-  text-align: justify;
-}
-
-img.logo-img {
-  margin: 0 auto;
-  
-  height: auto;
-  width: 220px;
-  padding: 1em;
-}
-img.logo-img.logo-img-big{
-  width: 300px;
-}
-img.logo-img.logo-img-small{
-  width: 180px;
-}
-.text-inside {
-  padding: 3em 5em;
-}
-.text-inside-left{
-  padding: 3em 3em 3em 0
-}
-.text-inside-right{
-  padding: 3em 0 3em 3em 
-}
-.text-inside-left .text-left,
-.text-inside-right .text-left{
-  text-align: justify;
-}
-.inside-img{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.text-inside h2,
-.text-inside h3{
-  margin-bottom: 0.8em
-}
-.text-inside .btn{
-  margin-top: 1.6em;
-}
-h4{
-  font-family: var(--font-lemon-milk);
-  font-size: 1.7em;
-  font-weight: 500;
-}
-h5{
-  font-family: var(--font-nunito);
-  font-size: 1.4em!important;
-  font-weight: 500!important;
-}
-p, li {
-  @apply font-nunito;
-}
-li{
-  color: #212121!important;
-}
-.content p{
-  color: #212121
-}
-
-body{
-  
-}
-.images2blocks{
-  /*min-height: 550px;*/
-}
-/* Neutra fonts face 
-@font-face {
-  font-family: 'NeutraBold';
-  src: url('/fonts/Neutra2Text-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'NeutraDemi';
-  src: url('/fonts/Neutra2Text-Demi.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'NeutraLight';
-  src: url('/fonts/Neutra2Text-Light.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-*/
-.logoLink{
-  display: flex;
-}
-.logoLinkImg{
-}
-
-.homeCover img.object-cover{
-
-}
-.homeCover{
-  background-position-y: -25em;
-  background-position-x: 0em;
-  background-repeat: no-repeat;
-
-}
-.homeCover.cover-smaller{
-  height: 60vh;
-
-  
-  
-}
-.linkedin-link{
-  width: 60px!important;
-  height: 60px!important;
-}
-.homeCover h2, 
-.homeCover h3,
-.homeCover p{
-  /*text-shadow: 1px 2px 1px rgba(9,19,105, 0.3);*/
-
-}
-.content h2{
-  font-family: var(--font-lemon-milk);
-  font-size: 2em;
-  font-weight: 500;
-}
-.content h3{
-  font-family: var(--font-nunito);
-  font-size: 1.6em;
-
-}
-.navbar.scrolled .langSwitcher a{
-  color: #4C4442;
-  border: 0 transparent;
-  @apply font-lato;
-}
-.navbar .langSwitcher a{
-  color: #fff;
-  border: 0 transparent;
-  @apply font-lato;
-}
-.navbar.scrolled .langSwitcher span{
-  color: #4C4442;
-  @apply font-lato;
-}
-.navbar .langSwitcher span{
-  color: #fff;
-  @apply font-lato;
-}
-
-.navbar .main-menu .relative.group{
-}
-
-.logoLinkImg{
-  filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.8));
-}
-
-.service1{
-  margin-bottom: -5em;
-}
-strong{
-  font-weight: 700!important;
-}
-.horairesinside{
-  padding-top: 6em
-}
-
-.follow-us img{
-  width: 60px!important;
-  height: 60px!important;
-  margin-top: 12px
-}
-.follow-us h5{
-  font-family: var(--font-lemon-milk);
-
-}
-.icon-presta{
-  width: 90px;
-  margin: 0 auto;
-}
-/* Styles pour les écrans de taille moyenne et supérieure */
-@media (min-width: 768px) {
-  .navbar .container,
-  .navbar .langSwitcher {
-    justify-content: flex-start;
-
-  }
-  .homeCover{
-    justify-content: center;
-    background: linear-gradient(to top right, #7E6E64, transparent);
-
-  }
-  .homeCover h2 {
-  }
-
-  
-}
-/* Vous pouvez ajouter d'autres styles spécifiques pour mobile ici */
-
-@media (max-width: 767px) {
-
-
-  .mobile-order-first {
-    order: -1 !important;
-  }
-  
-  .mobile-order-last {
-    order: 999 !important;
-  }
-
-  .text-inside-left,
-  .text-inside-right{
-    padding: 2em 1em;
-  }
-  .navbar .container,
-  .navbar .langSwitcher,
-  .navbar .ml-3  {
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 0.25em;
-  }
-  .navbar .langSwitcher,
-  .navbar .ml-3{
-    margin-top: 2.4em;
-    font-size: 0.85em;
-  }
-  .homeCover{
-    justify-content: center;
-    background: linear-gradient(to top right, rgba(17, 24, 39, 0.8), transparent);
-
-  }
-  .homeCover h2 {
-    font-size: 1.8em;
-  }
-  .navbar .logoLink{
-    margin-bottom: 0.65em;
-  }
-  .service2{                  
-    margin-bottom: -2em;
-  }
-  .horairesinside{
-    margin-top: -2.5em;
-    padding-top: 2em
-  }
-  .horairesimage{
-    margin-top: -6em;
-    padding-bottom: 3em
-  }
+.py-4 img{
+   margin-bottom: 1em
 }
 .card-item {
   background: #FFF7F7;
@@ -494,55 +188,10 @@ strong{
   max-width: 200px;
   margin: 0 auto;
 }
-/* Dans global.css */
-@media (max-width: 480px) {
-  .homeCover.cover-smaller{
-    background-position-x: -8em !important;
-    background-position-y: -3em !important;
-  }
-  .hero-anim-container {
-    margin-top: 10em;
-    margin-bottom: 0;
-  }
-  .hero-cta-container .column{
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .content h2{
-    font-size: 1.6em;
-    line-height: 1.9em;
-  }
-  .content h3{
-    font-size: 1.3em;
-    line-height: 1.6em;
-  }
 
-  .mobile-text-xs {
-    font-size: 9px !important;
-  }
-  .logo-nav-link img{
-    width: 130px;
-  }
-  .logo-nav-link p{
-    font-size: 9px;
-  }
-  .cta-nav{
-    font-size: 11px;
-  }
-  .child-container {
-    margin-top: 25vh;
-    padding-left: 0.5em;
-  }
-  .homeCover .child-container  h2{
-    font-size: 1.4em!important;
-  }
-  .child-container .btn{
-    font-size: 12px;
-  }
-}
-
-
-/* Styles pour le composant Reviews - à ajouter à global.css */
+/* =========================================================================
+   7. Reviews Section (Google & Carousel)
+========================================================================= */
 .reviews-section {
   background-color: #F3F3F8;
   padding: 3rem 1rem;
@@ -811,5 +460,185 @@ strong{
     width: 2.5rem;
     height: 2.5rem;
     font-size: 1.5rem;
+  }
+}
+
+/* =========================================================================
+   8. Cover Section (HomeCover)
+========================================================================= */
+.homeCover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 400px;
+  max-height: 900px;
+  height: 80vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.homeCover.cover-smaller {
+  height: 60vh;
+}
+
+.homeCover .child-container {
+  position: relative;
+  z-index: 1;
+}
+
+.homeCover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(21, 21, 21, 0.8), rgba(200, 200, 200, 0.2));
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .homeCover {
+    height: 90vh;
+    background: var(--bg-desktop);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 1024px) {
+  .homeCover {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .homeCover {
+    background: var(--bg-mobile);
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .homeCover.cover-smaller {
+    background-size: cover;
+  }
+
+  .homeCover h2 {
+    font-size: 1.8em;
+  }
+
+  .homeCover .child-container {
+    margin-top: 25vh;
+    padding-left: 0.5em;
+  }
+
+  .homeCover .child-container h2 {
+    font-size: 1.4em !important;
+  }
+
+  .homeCover .child-container .btn {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================================
+   9. Navbar & Logo
+========================================================================= */
+.navbar .container,
+.navbar .langSwitcher {
+  justify-content: flex-start;
+}
+
+.navbar.scrolled .langSwitcher a {
+  color: #4C4442;
+  border: 0 transparent;
+  @apply font-lato;
+}
+
+.navbar .langSwitcher a {
+  color: #fff;
+  border: 0 transparent;
+  @apply font-lato;
+}
+
+.navbar.scrolled .langSwitcher span {
+  color: #4C4442;
+  @apply font-lato;
+}
+
+.navbar .langSwitcher span {
+  color: #fff;
+  @apply font-lato;
+}
+
+.logo-nav-link {
+  padding-top: 0.8em;
+}
+
+.logoLink {
+  display: flex;
+}
+
+.logoLinkImg {
+  filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.8));
+}
+
+/* =========================================================================
+   10. Utility Classes & Miscellaneous
+========================================================================= */
+.revel-text-shadow {
+  text-shadow: 1px 1px 1px rgba(9,19,105, 0.6);
+}
+
+.follow-us img {
+  width: 60px !important;
+  height: 60px !important;
+  margin-top: 12px;
+}
+
+.follow-us h5 {
+  font-family: var(--font-lemon-milk);
+}
+
+/* =========================================================================
+   11. Media Queries (Tablet & Mobile)
+========================================================================= */
+@media (max-width: 480px) {
+  .hero-anim-container {
+    margin-top: 10em;
+    margin-bottom: 0;
+  }
+
+  .hero-cta-container .column {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .content h2 {
+    font-size: 1.6em;
+    line-height: 1.9em;
+  }
+
+  .content h3 {
+    font-size: 1.3em;
+    line-height: 1.6em;
+  }
+
+  .mobile-text-xs {
+    font-size: 9px !important;
+  }
+
+  .logo-nav-link img {
+    width: 130px;
+  }
+
+  .logo-nav-link p {
+    font-size: 9px;
+  }
+
+  .cta-nav {
+    font-size: 11px;
   }
 }
