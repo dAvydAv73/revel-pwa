@@ -92,10 +92,13 @@ li {
 @layer components {
   .btn {
     @apply font-lemonmilk font-medium hover:bg-[#091369] bg-[#FA1565] hover:text-[#FFF7F7] text-[#FFF7F7] whitespace-nowrap inline-flex my-2 py-3 cursor-pointer text-sm transition-all text-left min-w-[260px] px-4 border border-transparent;
+    @apply text-xs md:text-sm;
   }
 
   .btninvert {
     @apply font-lemonmilk font-medium hover:bg-[#FA1565] bg-[#091369] text-[#FFF7F7] hover:text-[#FFF7F7] whitespace-nowrap inline-flex my-2 px-20 py-3 cursor-pointer text-sm transition-all text-left min-w-[260px] px-4 border border-transparent;
+    @apply text-xs md:text-sm;
+
   }
 }
 
@@ -535,7 +538,7 @@ img.label-item {
   }
 
   .homeCover .child-container h2 {
-    font-size: 1.4em !important;
+    font-size: 1.3em !important;
   }
 
   .homeCover .child-container .btn {
@@ -618,7 +621,7 @@ img.label-item {
 
   .content h2 {
     font-size: 1.6em;
-    line-height: 1.9em;
+    line-height: 1.6em;
   }
 
   .content h3 {

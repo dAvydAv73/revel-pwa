@@ -141,7 +141,7 @@ export const Footer = ({ items = [], footerData = null }) => {
                 <h4 className="font-lemonmilk text-[22px] mb-4 text-[#FA1565]">Échangeons sur vos besoins</h4>
                 <p className="text-base text-white mb-4">
                   Commencez votre démarche, en toute confiance,<br />
-                  en profitant d'un premier RENDEZ-VOUS gratuit
+                  en profitant d&rsquo;un premier RENDEZ-VOUS gratuit
                 </p>
                 {/* Bouton rendez-vous */}
                   <a
