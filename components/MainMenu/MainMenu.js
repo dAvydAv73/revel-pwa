@@ -5,7 +5,7 @@ import Image from "next/image";
 import LogoIconWhite  from "../../public/img/logo-revel-white.png";
 import LogoIconBlue from "../../public/img/logo-revel.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils, faBars, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import { useLocale } from "next-intl";
@@ -144,7 +144,7 @@ export const MainMenu = ({
             {/* Bouton rendez-vous */}
             <a
               href="https://www.revel-tes-talents.com/rendez-vous#booking"
-              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-widt-[160px] cursor-pointer  bg-[#FA1565]  text-white"              
+              className="cta-nav px-3 py-3 flex items-center space-x-2 transition-colors font-lemonmilk text-xs sm:ml-2 min-w-[140px] lg:min-w-[160px] cursor-pointer  bg-[#FA1565]  text-white"              
             >
               Rendez-vous
               <FontAwesomeIcon icon={faCalendarDay} className="ml-2" />
