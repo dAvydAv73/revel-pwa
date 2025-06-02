@@ -11,12 +11,11 @@ const intlMiddleware = createMiddleware({
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  // 🔁 Redirection manuelle de /accueil → /
-  if (pathname === '/accueil') {
-    const url = request.nextUrl.clone();
-    url.pathname = '/';
-    return NextResponse.redirect(url);
-  }
+ if (pathname === '/accueil' || pathname === '/fr') {
+  const url = request.nextUrl.clone();
+  url.pathname = '/';
+  return NextResponse.redirect(url, 301);
+}
 
   return intlMiddleware(request);
 }

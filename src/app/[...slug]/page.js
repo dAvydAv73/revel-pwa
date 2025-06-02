@@ -23,7 +23,8 @@ export default async function Page({ params }) {
 
 export async function generateMetadata({ params }) {
   const rawSlug = params?.slug?.join("/") || "";
-  const slugPath = rawSlug === "accueil" || rawSlug === "fr" ? "/" : `/${rawSlug}`;
+  const cleanedSlug = rawSlug.replace(/^fr\/?/, ""); // supprime "fr/" ou "fr"
+  const slugPath = cleanedSlug === "" ? "/" : `/${cleanedSlug}`;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
 
   try {

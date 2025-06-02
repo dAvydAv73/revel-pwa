@@ -22,12 +22,14 @@ export async function GET() {
   }
 
   pages
-    .filter(page => page.slug !== 'accueil')
+    .filter(page => page.slug !== 'accueil' && !page.slug.startsWith('fr/'))
     .forEach(page => {
       urls.push(`
         <url>
           <loc>${baseUrl}/${page.slug}</loc>
           <lastmod>${new Date(page.modified_gmt).toISOString()}</lastmod>
+          <changefreq>weekly</changefreq>
+          <priority>1</priority>
         </url>
       `);
     });

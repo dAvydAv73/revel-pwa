@@ -1,14 +1,14 @@
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.revel-tes-talents.com';
 
-  const content = `
+const content = `
 User-agent: *
 Allow: /
-
-Sitemap: ${baseUrl}/sitemap.xml
-
+Disallow: /fr$
+Disallow: /fr/
 Disallow: /_next/static/
 
+Sitemap: ${baseUrl}/sitemap.xml
 `;
 
   return new Response(content.trim(), {
